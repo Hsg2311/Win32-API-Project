@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "Core.hpp"
 
+#include "Timer.hpp"
+
 Core::Core( )
 	: hWnd_{ nullptr }
 	, resolution_{ }
@@ -23,14 +25,20 @@ int Core::init( HWND hWnd, POINT resolution )
 
 	hdc_ = GetDC( hWnd_ );
 
+	Timer::GetInst( ).init( );
+
 	return S_OK;
 }
 
 void Core::progress( )
 {
+	Timer::GetInst( ).update( );
+
 	update( );
 
 	render( );
+
+	Timer::GetInst( ).render( );
 }
 
 void Core::update( )

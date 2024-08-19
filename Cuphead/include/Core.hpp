@@ -9,6 +9,8 @@ public:
 	int init( HWND hWnd, POINT resolution );
 	void progress( );
 
+	HWND getHwnd( ) const { return hWnd_; }
+
 private:
 	void update( );
 	void render( );
