@@ -16,7 +16,7 @@
 							type( );\
 							~type( )
 
-inline float fDT( ) { return Timer::GetInst( ).getFDT( ); }
-inline double DT( ) { return Timer::GetInst( ).getDT( ); }
+#define fDT Timer::GetInst().getFDT()
+#define DT Timer::GetInst().getDT()
 
 #endif // __DEFINE_HPP
