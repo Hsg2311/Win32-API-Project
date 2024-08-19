@@ -19,6 +19,9 @@ private:
 	HWND hWnd_;
 	POINT resolution_;
 	HDC hdc_;
+
+	HBITMAP hBitmap_;
+	HDC hMemDC_;
 };
 
 #endif // __CORE_HPP
