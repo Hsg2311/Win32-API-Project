@@ -15,6 +15,9 @@
 #include <memory.h>
 #include <tchar.h>
 
+#include <vector>
+
 #include "define.hpp"
+#include "struct.hpp"
 
 #endif // __PCH_H
