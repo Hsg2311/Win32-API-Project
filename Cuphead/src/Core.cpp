@@ -2,6 +2,7 @@
 #include "Core.hpp"
 
 #include "Timer.hpp"
+#include "InputDeviceHandler.hpp"
 
 Core::Core( )
 	: hWnd_{ nullptr }
@@ -37,8 +38,9 @@ int Core::init( HWND hWnd, POINT resolution )
 	HBITMAP defaultBmp = (HBITMAP)SelectObject( hMemDC_, hBitmap_ );
 	DeleteObject( defaultBmp );
 
-	// Manager 초기화
+	// Handler 초기화
 	Timer::GetInst( ).init( );
+	InputDeviceHandler::GetInst( ).init( );
 
 	return S_OK;
 }
@@ -46,6 +48,7 @@ int Core::init( HWND hWnd, POINT resolution )
 void Core::progress( )
 {
 	Timer::GetInst( ).update( );
+	InputDeviceHandler::GetInst( ).update( );
 
 	update( );
 

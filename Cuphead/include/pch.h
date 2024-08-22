@@ -16,6 +16,8 @@
 #include <tchar.h>
 
 #include <vector>
+#include <algorithm>
+#include <ranges>
 
 #include "define.hpp"
 #include "struct.hpp"

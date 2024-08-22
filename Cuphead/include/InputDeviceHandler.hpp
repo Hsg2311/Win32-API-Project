@@ -67,6 +67,10 @@ public:
 	void init( );
 	void update( );
 
+	KEY_STATE getKeyState( InputData key ) const {
+		return inputDataInfo_[ static_cast<UINT>( key ) ].state;
+	}
+
 private:
 	std::vector<InputDataInfo> inputDataInfo_;
 };
