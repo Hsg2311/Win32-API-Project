@@ -3,6 +3,7 @@
 
 #include "Timer.hpp"
 #include "InputDeviceHandler.hpp"
+#include "SceneHandler.hpp"
 
 Core::Core( )
 	: hWnd_{ nullptr }
@@ -41,30 +42,22 @@ int Core::init( HWND hWnd, POINT resolution )
 	// Handler √ ±‚»≠
 	Timer::GetInst( ).init( );
 	InputDeviceHandler::GetInst( ).init( );
+	SceneHandler::GetInst( ).init( );
 
 	return S_OK;
 }
 
 void Core::progress( )
 {
+	// Handler update
 	Timer::GetInst( ).update( );
 	InputDeviceHandler::GetInst( ).update( );
+	SceneHandler::GetInst( ).update( );
 
-	update( );
-
+	// Rendering (Double buffering)
 	Rectangle( hMemDC_, -1, -1, resolution_.x + 1, resolution_.y + 1 );
-	render( );
-	BitBlt( hdc_, 0, 0, resolution_.x, resolution_.y
-		, hMemDC_, 0, 0, SRCCOPY );
-
+	SceneHandler::GetInst( ).render( hMemDC_ );
+	BitBlt( hdc_, 0, 0, resolution_.x, resolution_.y, hMemDC_, 0, 0, SRCCOPY );
 
 	Timer::GetInst( ).render( );
-}
-
-void Core::update( )
-{
-}
-
-void Core::render( )
-{
 }

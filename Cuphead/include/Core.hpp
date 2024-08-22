@@ -12,10 +12,6 @@ public:
 	HWND getHwnd( ) const { return hWnd_; }
 
 private:
-	void update( );
-	void render( );
-
-private:
 	HWND hWnd_;
 	POINT resolution_;
 	HDC hdc_;
