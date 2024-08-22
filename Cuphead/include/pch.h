@@ -15,7 +15,9 @@
 #include <memory.h>
 #include <tchar.h>
 
+#include <string>
 #include <vector>
+#include <array>
 #include <algorithm>
 #include <ranges>
 
