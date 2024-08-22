@@ -19,4 +19,22 @@
 #define fDT Timer::GetInst().getFDT()
 #define DT Timer::GetInst().getDT()
 
+enum class GROUP_TYPE
+{
+	DEFAULT,
+	PLAYER,
+	PROJECTILE,
+	ENEMY,
+
+	EOE
+};
+
+enum class SCENE_TYPE
+{
+	START_SCENE,
+	TUTORIAL_SCENE,
+
+	EOE
+};
+
 #endif // __DEFINE_HPP
