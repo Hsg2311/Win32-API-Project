@@ -21,6 +21,8 @@ public:
 		: x{ static_cast<float>( x ) }
 		, y{ static_cast<float>( y ) }
 	{}
+
+public:
 };
 
 #endif // __STRUCT_HPP

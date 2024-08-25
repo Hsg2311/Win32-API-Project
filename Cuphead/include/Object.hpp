@@ -14,6 +14,10 @@ public:
 	Vec2 getObjPos( ) const { return objPos_; }
 	Vec2 getObjScale( ) const { return objScale_; }
 
+public:
+	virtual void update( ) = 0;
+	virtual void render( HDC hdc ) = 0;
+
 private:
 	Vec2 objPos_;
 	Vec2 objScale_;

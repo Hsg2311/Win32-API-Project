@@ -10,6 +10,7 @@ public:
 	void progress( );
 
 	HWND getHwnd( ) const { return hWnd_; }
+	POINT getResolution( ) const { return resolution_; }
 
 private:
 	HWND hWnd_;
