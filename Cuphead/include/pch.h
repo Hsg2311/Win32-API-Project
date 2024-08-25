@@ -18,12 +18,15 @@
 #include <string>
 #include <vector>
 #include <array>
+#include <map>
 #include <algorithm>
 #include <ranges>
 #include <atlimage.h>
 
 #include <filesystem>
 namespace fs = std::filesystem;
+
+#include <cassert>
 
 #include "define.hpp"
 #include "struct.hpp"

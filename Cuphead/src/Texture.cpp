@@ -3,10 +3,16 @@
 
 Texture::Texture( )
 	: texDc_{ nullptr }
-	, texBmp_{ nullptr }
+	, texImage_{ }
 {
 }
 
 Texture::~Texture( )
 {
+	
+}
+
+void Texture::Load( const std::wstring& filePath )
+{
+	texImage_.Load( filePath.c_str( ) );
 }

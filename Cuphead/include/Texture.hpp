@@ -5,13 +5,18 @@
 
 class Texture : public Res
 {
-public:
+private:
 	Texture( );
 	virtual ~Texture( );
 
+public:
+	void Load( const std::wstring& filePath );
+
 private:
 	HDC texDc_;
-	HBITMAP texBmp_;
+	CImage texImage_;
+
+	friend class ResourceHandler;
 };
 
 #endif // __TEXTURE_HPP
