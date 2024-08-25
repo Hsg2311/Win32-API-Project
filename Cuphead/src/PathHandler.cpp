@@ -24,11 +24,8 @@ void PathHandler::init( )
 			return false;
 		}
 	);
-	
-	if ( pathCheck == fs::end( fs::recursive_directory_iterator( contentPath_ ) ) ) {
-		MessageBox( nullptr, L"content folder not found", L"Error", MB_OK );
-		PostQuitMessage( 0 );
-	}
+
+	assert( pathCheck != fs::end( fs::recursive_directory_iterator( contentPath_ ) ) );
 
 	//SetWindowText( Core::GetInst( ).getHwnd( ), fs::canonical( contentPath_ ).c_str() );
 }
