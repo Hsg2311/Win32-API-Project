@@ -24,6 +24,11 @@ void Timer::update( )
 				/ static_cast<double>( frequency_.QuadPart );
 
 	prevCount_ = currCount_;
+
+#ifdef _DEBUG
+	if( deltaTime_ > ( 1. / 60. ) )
+		deltaTime_ = ( 1. / 60. );
+#endif
 }
 
 void Timer::render( )
