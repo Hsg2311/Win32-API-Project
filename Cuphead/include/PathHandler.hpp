@@ -7,7 +7,7 @@ class PathHandler
 
 public:
 	void init( );
-	const std::wstring& getContentPath( ) const { return contentPath_.wstring( ); }
+	const fs::path & getContentPath( ) const { return contentPath_; }
 
 private:
 	fs::path contentPath_;

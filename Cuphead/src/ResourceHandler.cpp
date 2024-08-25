@@ -10,7 +10,11 @@ ResourceHandler::ResourceHandler( )
 {}
 
 ResourceHandler::~ResourceHandler( )
-{}
+{
+	std::for_each( texMap_.begin( ), texMap_.end( ), []( auto& tex ) {
+		delete tex.second;
+	} );
+}
 
 Texture* ResourceHandler::LoadTexture( const std::wstring& resKey, const std::wstring& relativePath )
 {
@@ -18,7 +22,7 @@ Texture* ResourceHandler::LoadTexture( const std::wstring& resKey, const std::ws
 	if ( tex )
 		return tex;
 
-	auto filePath = PathHandler::GetInst( ).getContentPath( ) + relativePath;
+	auto filePath = PathHandler::GetInst( ).getContentPath( ).c_str( ) + relativePath;
 
 	tex = new Texture{ };
 	tex->Load( filePath );
