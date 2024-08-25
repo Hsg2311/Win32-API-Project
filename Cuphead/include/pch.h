@@ -20,6 +20,10 @@
 #include <array>
 #include <algorithm>
 #include <ranges>
+#include <atlimage.h>
+
+#include <filesystem>
+namespace fs = std::filesystem;
 
 #include "define.hpp"
 #include "struct.hpp"

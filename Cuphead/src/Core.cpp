@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Core.hpp"
 
+#include "PathHandler.hpp"
 #include "Timer.hpp"
 #include "InputDeviceHandler.hpp"
 #include "SceneHandler.hpp"
@@ -40,6 +41,7 @@ int Core::init( HWND hWnd, POINT resolution )
 	DeleteObject( defaultBmp );
 
 	// Handler √ ±‚»≠
+	PathHandler::GetInst( ).init( );
 	Timer::GetInst( ).init( );
 	InputDeviceHandler::GetInst( ).init( );
 	SceneHandler::GetInst( ).init( );
