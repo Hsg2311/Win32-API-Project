@@ -12,6 +12,9 @@ public:
 	void update( );
 	void render( HDC hdc );
 
+public:
+	Scene* getCurrScene( ) const { return currScene_; }
+
 private:
 	std::array<Scene*, static_cast<UINT>( SCENE_TYPE::EOE )> sceneList_;
 	Scene* currScene_;
