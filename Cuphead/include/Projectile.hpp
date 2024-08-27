@@ -10,20 +10,14 @@ public:
 	virtual ~Projectile( );
 
 public:
-	void setDirection( bool up )
-	{
-		if( up )
-			direction_ = -1.f;
-		else
-			direction_ = 1.f;
-	}
+	void setDirection( float theta ) { theta_ = theta; }
 
 public:
 	virtual void update( ) override;
 	virtual void render( HDC hdc ) override;
 
 private:
-	float direction_;
+	float theta_;
 };
 
 #endif // __PROJECTILE_HPP

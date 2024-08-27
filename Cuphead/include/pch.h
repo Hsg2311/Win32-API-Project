@@ -28,6 +28,9 @@ namespace fs = std::filesystem;
 
 #include <cassert>
 
+#define _USE_MATH_DEFINES
+#include <math.h>
+
 #include "define.hpp"
 #include "struct.hpp"
 

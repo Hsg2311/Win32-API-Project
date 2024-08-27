@@ -4,7 +4,7 @@
 #include "Timer.hpp"
 
 Projectile::Projectile( )
-	: direction_{ 0.f }
+	: theta_{ 0.f }
 {
 }
 
@@ -15,8 +15,9 @@ Projectile::~Projectile( )
 void Projectile::update( )
 {
 	auto objPos = getObjPos( );
-
-	objPos.y += 600.f * fDT * direction_;
+	
+	objPos.x += 600.f * cosf( theta_ ) * fDT;
+	objPos.y -= 600.f * sinf( theta_ ) * fDT;
 
 	setObjPos( objPos );
 }

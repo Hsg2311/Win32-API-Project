@@ -24,7 +24,7 @@ void Player::CreateProjectile( )
 	Projectile* projectile = new Projectile{ };
 	projectile->setObjPos( playerPos );
 	projectile->setObjScale( Vec2{ 30.f, 30.f } );
-	projectile->setDirection( true );
+	projectile->setDirection( M_PI_4 );
 	
 	SceneHandler::GetInst( ).getCurrScene( )->addObject( GROUP_TYPE::DEFAULT, projectile );
 };
