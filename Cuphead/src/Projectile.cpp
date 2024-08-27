@@ -5,8 +5,8 @@
 
 Projectile::Projectile( )
 	: theta_{ 0.f }
-{
-}
+	, direction_{ }
+{}
 
 Projectile::~Projectile( )
 {
@@ -16,8 +16,11 @@ void Projectile::update( )
 {
 	auto objPos = getObjPos( );
 	
-	objPos.x += 600.f * cosf( theta_ ) * fDT;
-	objPos.y -= 600.f * sinf( theta_ ) * fDT;
+	//objPos.x += 600.f * cosf( theta_ ) * fDT;
+	//objPos.y -= 600.f * sinf( theta_ ) * fDT;
+
+	objPos.x += 600.f * direction_.x * fDT;
+	objPos.y -= 600.f * direction_.y * fDT;
 
 	setObjPos( objPos );
 }

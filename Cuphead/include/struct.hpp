@@ -7,6 +7,17 @@ struct Vec2
 	float y;
 
 public:
+	void Normalize( )
+	{
+		auto hypotenuse = std::hypot( x, y );
+
+		assert( hypotenuse != 0.f );
+
+		x /= hypotenuse;
+		y /= hypotenuse;
+	}
+
+public:
 	Vec2( )
 		: x{ 0.f }
 		, y{ 0.f }
