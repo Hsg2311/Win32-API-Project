@@ -25,8 +25,7 @@
 #define KEY_AWAY( key ) KEY_CHECK( key, KEY_STATE::AWAY )
 #define KEY_NONE( key ) KEY_CHECK( key, KEY_STATE::NONE )
 
-enum class GROUP_TYPE
-{
+enum class GROUP_TYPE {
 	DEFAULT,
 	PLAYER,
 	PROJECTILE,
@@ -35,8 +34,7 @@ enum class GROUP_TYPE
 	EOE
 };
 
-enum class SCENE_TYPE
-{
+enum class SCENE_TYPE {
 	START_SCENE,
 	TUTORIAL_SCENE,
 

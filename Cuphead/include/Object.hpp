@@ -28,8 +28,8 @@ public:
 		if ( collider_ ) {
 			collider_->update( getObjPos( ) );
 		}
-
 	}
+
 	virtual void render( HDC hdc ) = 0 {
 		Rectangle( hdc
 			, static_cast<int>( objPos_.x - objScale_.x / 2.f )

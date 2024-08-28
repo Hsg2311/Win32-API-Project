@@ -1,11 +1,12 @@
 #ifndef __RESOURCE_HPP
 #define __RESOURCE_HPP
 
-class Res
-{
+#include <string>
+
+class Res {
 public:
-	Res( );
-	virtual ~Res( ) = 0;
+	Res( ) : resKey_{ }, relativePath_{ } {}
+	virtual ~Res( ) = 0 {}
 
 public:
 	void setResKey( const std::wstring& resKey ) { resKey_ = resKey; }

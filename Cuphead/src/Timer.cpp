@@ -1,6 +1,6 @@
-#include "pch.h"
-#include "Timer.hpp"
 #include "Core.hpp"
+#include "Timer.hpp"
+#include <iostream>
 
 Timer::Timer( )
 	: prevCount_{ }, currCount_{ }, frequency_{ }
@@ -10,14 +10,12 @@ Timer::Timer( )
 Timer::~Timer( )
 {}
 
-void Timer::init( )
-{
+void Timer::init( ) {
 	QueryPerformanceCounter( &prevCount_ );
 	QueryPerformanceFrequency( &frequency_ );
 }
 
-void Timer::update( )
-{
+void Timer::update( ) {
 	QueryPerformanceCounter( &currCount_ );
 
 	deltaTime_ = static_cast<double>( currCount_.QuadPart - prevCount_.QuadPart ) 
@@ -31,8 +29,7 @@ void Timer::update( )
 #endif
 }
 
-void Timer::render( )
-{
+void Timer::render( ) {
 	accTime_ += deltaTime_;
 	++fps_;
 

@@ -3,8 +3,7 @@
 
 #include "Scene.hpp"
 
-class Start_Scene : public Scene
-{
+class Start_Scene : public Scene {
 public:
 	Start_Scene( );
 	virtual ~Start_Scene( );

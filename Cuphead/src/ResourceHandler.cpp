@@ -1,23 +1,20 @@
-#include "pch.h"
-#include "ResourceHandler.hpp"
-
 #include "PathHandler.hpp"
 #include "Res.hpp"
+#include "ResourceHandler.hpp"
 #include "Texture.hpp"
+#include <cassert>
 
 ResourceHandler::ResourceHandler( )
 	: texMap_{ }
 {}
 
-ResourceHandler::~ResourceHandler( )
-{
+ResourceHandler::~ResourceHandler( ) {
 	std::for_each( texMap_.begin( ), texMap_.end( ), []( auto& tex ) {
 		delete tex.second;
 	} );
 }
 
-Texture* ResourceHandler::LoadTexture( const std::wstring& resKey, const std::wstring& relativePath )
-{
+Texture* ResourceHandler::LoadTexture( const std::wstring& resKey, const std::wstring& relativePath ) {
 	Texture* tex = FindTexture( resKey );
 	if ( tex )
 		return tex;
@@ -34,8 +31,7 @@ Texture* ResourceHandler::LoadTexture( const std::wstring& resKey, const std::ws
 	return tex;
 }
 
-Texture* ResourceHandler::FindTexture( const std::wstring& resKey )
-{
+Texture* ResourceHandler::FindTexture( const std::wstring& resKey ) {
 	auto tex = texMap_.find( resKey );
 
 	if ( tex == texMap_.end( ) )

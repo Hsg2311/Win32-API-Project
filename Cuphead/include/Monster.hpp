@@ -2,9 +2,10 @@
 #define __MONSTER_HPP
 
 #include "Object.hpp"
+#include "struct.hpp"
+#include <Windows.h>
 
-class Monster : public Object
-{
+class Monster : public Object {
 public:
 	Monster( );
 	virtual ~Monster( );

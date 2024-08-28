@@ -5,8 +5,7 @@
 
 class Texture;
 
-class Player : public Object
-{
+class Player : public Object {
 public:
 	Player( );
 	virtual ~Player( );

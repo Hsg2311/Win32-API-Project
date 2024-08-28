@@ -2,12 +2,15 @@
 #define __TEXTURE_HPP
 
 #include "Res.hpp"
+#include "struct.hpp"
+#include <atlimage.h>
+#include <string>
+#include <Windows.h>
 
-class Texture : public Res
-{
+class Texture : public Res {
 private:
-	Texture( );
-	virtual ~Texture( );
+	Texture( ) : texImage_{ } {};
+	virtual ~Texture( ) {}
 
 public:
 	void Load( const std::wstring& filePath ) { texImage_.Load( filePath.c_str( ) ); }

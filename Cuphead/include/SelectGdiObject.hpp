@@ -4,8 +4,7 @@
 #include "Core.hpp"
 #include <Windows.h>
 
-class SelectGdiObject
-{
+class SelectGdiObject {
 public:
 	SelectGdiObject( HDC hdc, PEN_TYPE pen, BRUSH_TYPE brush ) 
 		: hdc_{ hdc }

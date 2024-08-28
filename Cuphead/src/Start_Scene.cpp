@@ -1,11 +1,8 @@
-#include "pch.h"
-#include "Start_Scene.hpp"
-
+#include "Core.hpp"
+#include "Monster.hpp"
 #include "Object.hpp"
 #include "Player.hpp"
-#include "Monster.hpp"
-
-#include "Core.hpp"
+#include "Start_Scene.hpp"
 
 Start_Scene::Start_Scene( )
 {}
@@ -13,8 +10,7 @@ Start_Scene::Start_Scene( )
 Start_Scene::~Start_Scene( )
 {}
 
-void Start_Scene::Entry( )
-{
+void Start_Scene::Entry( ) {
 	Object* obj = new Player{ };
 	obj->setObjPos( Vec2{ 640.f, 384.f } );
 	obj->setObjScale( Vec2{ 100.f, 100.f } );
@@ -36,8 +32,7 @@ void Start_Scene::Entry( )
 	}
 }
 
-void Start_Scene::Exit( )
-{
+void Start_Scene::Exit( ) {
 }
 
 //void Start_Scene::update( )

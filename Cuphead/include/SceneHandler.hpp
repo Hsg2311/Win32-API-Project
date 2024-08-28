@@ -1,10 +1,13 @@
 #ifndef __SCENE_HANDLER_HPP
 #define __SCENE_HANDLER_HPP
 
+#include "define.hpp"
+#include <array>
+#include <Windows.h>
+
 class Scene;
 
-class SceneHandler
-{
+class SceneHandler {
 	SINGLETON( SceneHandler );
 
 public:

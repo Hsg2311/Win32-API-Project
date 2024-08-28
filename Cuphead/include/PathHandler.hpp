@@ -1,8 +1,11 @@
 #ifndef __PATH_HANDLER_HPP
 #define __PATH_HANDLER_HPP
 
-class PathHandler
-{
+#include "define.hpp"
+#include <filesystem>
+namespace fs = std::filesystem;
+
+class PathHandler {
 	SINGLETON( PathHandler );
 
 public:

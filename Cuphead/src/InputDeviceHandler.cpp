@@ -1,4 +1,3 @@
-#include "pch.h"
 #include "InputDeviceHandler.hpp"
 
 int g_arrVK[ static_cast<UINT>( InputData::EOE ) ] = {
@@ -43,23 +42,20 @@ int g_arrVK[ static_cast<UINT>( InputData::EOE ) ] = {
 };
 
 InputDeviceHandler::InputDeviceHandler( )
-	: inputDataInfo_{ }
-{
+	: inputDataInfo_{ } {
 	inputDataInfo_.reserve( static_cast<UINT>( InputData::EOE ) );
 }
 
 InputDeviceHandler::~InputDeviceHandler( )
 {}
 
-void InputDeviceHandler::init( )
-{
+void InputDeviceHandler::init( ) {
 	for ( UINT i = 0; i < static_cast<UINT>( InputData::EOE ); ++i ) {
 		inputDataInfo_.emplace_back( KEY_STATE::NONE, false );
 	}
 }
 
-void InputDeviceHandler::update( )
-{
+void InputDeviceHandler::update( ) {
 	// 현재 포커싱된 윈도우의 핸들을 가져옴
 	HWND hWnd = GetFocus( );
 

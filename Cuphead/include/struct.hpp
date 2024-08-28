@@ -1,14 +1,15 @@
 #ifndef __STRUCT_HPP
 #define __STRUCT_HPP
 
-struct Vec2
-{
+#include <cassert>
+#include <cmath>
+
+struct Vec2 {
 	float x;
 	float y;
 
 public:
-	void Normalize( )
-	{
+	void Normalize( ) {
 		auto hypotenuse = std::hypot( x, y );
 
 		assert( hypotenuse != 0.f );
@@ -34,54 +35,46 @@ public:
 	{}
 
 public:
-	Vec2 operator+( const Vec2& rhs ) const
-	{
+	Vec2 operator+( const Vec2& rhs ) const	{
 		return Vec2{ x + rhs.x, y + rhs.y };
 	}
 
-	Vec2 operator-( const Vec2& rhs ) const
-	{
+	Vec2 operator-( const Vec2& rhs ) const	{
 		return Vec2{ x - rhs.x, y - rhs.y };
 	}
 
-	Vec2 operator*( float scalar ) const
-	{
+	Vec2 operator*( float scalar ) const {
 		return Vec2{ x * scalar, y * scalar };
 	}
 
-	Vec2 operator/( float scalar ) const
-	{
+	Vec2 operator/( float scalar ) const {
 		assert( scalar != 0.f );
 
 		return Vec2{ x / scalar, y / scalar };
 	}
 
-	Vec2& operator+=( const Vec2& rhs )
-	{
+	Vec2& operator+=( const Vec2& rhs )	{
 		x += rhs.x;
 		y += rhs.y;
 
 		return *this;
 	}
 
-	Vec2& operator-=( const Vec2& rhs )
-	{
+	Vec2& operator-=( const Vec2& rhs )	{
 		x -= rhs.x;
 		y -= rhs.y;
 
 		return *this;
 	}
 
-	Vec2& operator*=( float scalar )
-	{
+	Vec2& operator*=( float scalar ) {
 		x *= scalar;
 		y *= scalar;
 
 		return *this;
 	}
 
-	Vec2& operator/=( float scalar )
-	{
+	Vec2& operator/=( float scalar ) {
 		assert( scalar != 0.f );
 
 		x /= scalar;

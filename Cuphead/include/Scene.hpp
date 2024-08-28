@@ -1,10 +1,15 @@
 #ifndef __SCENE_HPP
 #define __SCENE_HPP
 
+#include "define.hpp"
+#include <array>
+#include <string>
+#include <vector>
+#include <Windows.h>
+
 class Object;
 
-class Scene
-{
+class Scene {
 public:
 	Scene( );
 	virtual ~Scene( ) = 0;

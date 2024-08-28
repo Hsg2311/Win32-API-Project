@@ -15,8 +15,7 @@ Core::Core( )
 	, hBrush_{ }
 {}
 
-Core::~Core( ) 
-{
+Core::~Core( ) {
 	ReleaseDC( hWnd_, hdc_ );
 	DeleteDC( hMemDC_ );
 	DeleteObject( hBitmap_ );
@@ -25,8 +24,7 @@ Core::~Core( )
 	std::for_each( hBrush_.begin( ), hBrush_.end( ), []( HBRUSH& brush ) { DeleteObject( brush ); } );
 }
 
-int Core::init( HWND hWnd, POINT resolution ) 
-{
+int Core::init( HWND hWnd, POINT resolution ) {
 	hWnd_ = hWnd;
 	resolution_ = resolution;
 
@@ -55,8 +53,7 @@ int Core::init( HWND hWnd, POINT resolution )
 	return S_OK;
 }
 
-void Core::progress( )
-{
+void Core::progress( ) {
 	// Handler update
 	Timer::GetInst( ).update( );
 	InputDeviceHandler::GetInst( ).update( );

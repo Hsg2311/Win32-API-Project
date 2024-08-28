@@ -5,8 +5,7 @@
 #include <array>
 #include <Windows.h>
 
-class Core
-{
+class Core {
 	SINGLETON( Core );
 
 public:

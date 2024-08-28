@@ -12,14 +12,12 @@ Player::Player( )
 	: playerTex_{ ResourceHandler::GetInst( ).LoadTexture( L"Player_Texture", L"/texture/idle/cuphead_idle.png" ) } {
 	CreateCollider( );
 	getCollider( )->setScale( Vec2{ 100.f, 100.f } );
-
 }
 
 Player::~Player( )
 {}
 
-void Player::CreateProjectile( )
-{
+void Player::CreateProjectile( ) {
 	auto playerPos = getObjPos( );
 	playerPos.y -= getObjScale( ).y / 2.f;
 	
@@ -31,8 +29,7 @@ void Player::CreateProjectile( )
 	SceneHandler::GetInst( ).getCurrScene( )->addObject( GROUP_TYPE::DEFAULT, projectile );
 };
 
-void Player::update( )
-{
+void Player::update( ) {
 	Vec2 objPos = getObjPos( );
 
 	if ( KEY_HOLD( InputData::LEFT ) ) {
@@ -54,8 +51,7 @@ void Player::update( )
 	setObjPos( objPos );
 }
 
-void Player::render( HDC hdc )
-{
+void Player::render( HDC hdc ) {
 	Vec2 objPos = getObjPos( );
 
 	playerTex_->Draw( hdc, objPos );

@@ -2,17 +2,17 @@
 #define __PROJECTILE_HPP
 
 #include "Object.hpp"
+#include "struct.hpp"
+#include <Windows.h>
 
-class Projectile : public Object
-{
+class Projectile : public Object {
 public:
 	Projectile( );
 	virtual ~Projectile( );
 
 public:
 	void setDirection( float theta ) { theta_ = theta; }
-	void setDirection( const Vec2& direction ) 
-	{ 
+	void setDirection( const Vec2& direction ) { 
 		direction_ = direction;
 		direction_.Normalize( );
 	}

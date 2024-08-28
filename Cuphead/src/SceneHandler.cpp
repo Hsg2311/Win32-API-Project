@@ -1,6 +1,4 @@
-#include "pch.h"
 #include "SceneHandler.hpp"
-
 #include "Start_Scene.hpp"
 
 SceneHandler::SceneHandler( )
@@ -8,15 +6,13 @@ SceneHandler::SceneHandler( )
 	, currScene_{ nullptr }
 {}
 
-SceneHandler::~SceneHandler( )
-{
+SceneHandler::~SceneHandler( ) {
 	for ( auto& scene : sceneList_ ) {
 		delete scene;
 	}
 }
 
-void SceneHandler::init( )
-{
+void SceneHandler::init( ) {
 	// Scene »ý¼º
 	sceneList_[ static_cast<UINT>( SCENE_TYPE::START_SCENE ) ] = new Start_Scene{ };
 	sceneList_[ static_cast<UINT>( SCENE_TYPE::START_SCENE ) ]->setSceneName( L"Start Scene" );
@@ -26,13 +22,11 @@ void SceneHandler::init( )
 	currScene_->Entry( );
 }
 
-void SceneHandler::update( )
-{
+void SceneHandler::update( ) {
 	currScene_->update( );
 	currScene_->componentUpdate( );
 }
 
-void SceneHandler::render( HDC hdc )
-{
+void SceneHandler::render( HDC hdc ) {
 	currScene_->render( hdc );
 }

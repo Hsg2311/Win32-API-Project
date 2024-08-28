@@ -1,7 +1,7 @@
-#include "pch.h"
 #include "Projectile.hpp"
-
 #include "Timer.hpp"
+//#define _USE_MATH_DEFINES
+//#include <math.h>
 
 Projectile::Projectile( )
 	: theta_{ 0.f }
@@ -9,11 +9,9 @@ Projectile::Projectile( )
 {}
 
 Projectile::~Projectile( )
-{
-}
+{}
 
-void Projectile::update( )
-{
+void Projectile::update( ) {
 	auto objPos = getObjPos( );
 	
 	//objPos.x += 600.f * cosf( theta_ ) * fDT;
@@ -25,8 +23,7 @@ void Projectile::update( )
 	setObjPos( objPos );
 }
 
-void Projectile::render( HDC hdc )
-{
+void Projectile::render( HDC hdc ) {
 	auto objPos = getObjPos( );
 	auto objScale = getObjScale( );
 

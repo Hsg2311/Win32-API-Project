@@ -1,16 +1,18 @@
 #ifndef __INPUT_DEVICE_HANDLER_HPP
 #define __INPUT_DEVICE_HANDLER_HPP
 
-enum class KEY_STATE
-{
+#include "define.hpp"
+#include <vector>
+#include <Windows.h>
+
+enum class KEY_STATE {
 	NONE,
 	TAP,
 	HOLD,
 	AWAY
 };
 
-enum class InputData
-{
+enum class InputData {
 	LEFT,
 	RIGHT,
 	UP,
@@ -53,14 +55,12 @@ enum class InputData
 	EOE
 };
 
-struct InputDataInfo
-{
+struct InputDataInfo {
 	KEY_STATE state;
 	bool isPressed;
 };
 
-class InputDeviceHandler
-{
+class InputDeviceHandler {
 	SINGLETON( InputDeviceHandler );
 
 public:

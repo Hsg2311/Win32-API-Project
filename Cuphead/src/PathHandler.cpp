@@ -1,5 +1,5 @@
-#include "pch.h"
 #include "PathHandler.hpp"
+#include <cassert>
 
 //#include "Core.hpp"
 
@@ -10,8 +10,7 @@ PathHandler::PathHandler( )
 PathHandler::~PathHandler( )
 {}
 
-void PathHandler::init( )
-{
+void PathHandler::init( ) {
 	auto pathCheck = 
 	std::find_if( fs::recursive_directory_iterator( contentPath_ ),
 		fs::end( fs::recursive_directory_iterator( contentPath_ ) ),

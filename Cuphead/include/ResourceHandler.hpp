@@ -1,11 +1,14 @@
 #ifndef __RESOURCE_HANDLER_HPP
 #define __RESOURCE_HANDLER_HPP
 
+#include "define.hpp"
+#include <map>
+#include <string>
+
 class Res;
 class Texture;
 
-class ResourceHandler
-{
+class ResourceHandler {
 	SINGLETON( ResourceHandler );
 
 public:

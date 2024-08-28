@@ -1,8 +1,9 @@
 #ifndef __TIMER_HPP
 #define __TIMER_HPP
 
-class Timer
-{
+#include "define.hpp"
+
+class Timer {
 	SINGLETON( Timer );
 
 public:
