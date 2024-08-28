@@ -43,4 +43,18 @@ enum class SCENE_TYPE
 	EOE
 };
 
+enum class PEN_TYPE {
+	RED,
+	GREEN,
+	BLUE,
+
+	EOE
+};
+
+enum class BRUSH_TYPE {
+	HOLLOW,
+
+	EOE
+};
+
 #endif // __DEFINE_HPP

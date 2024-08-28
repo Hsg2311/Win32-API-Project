@@ -1,23 +1,22 @@
-#include "pch.h"
-#include "Player.hpp"
-
 #include "InputDeviceHandler.hpp"
-#include "Timer.hpp"
-
+#include "Player.hpp"
 #include "Projectile.hpp"
+#include "ResourceHandler.hpp"
 #include "Scene.hpp"
 #include "SceneHandler.hpp"
-#include "ResourceHandler.hpp"
+#include "struct.hpp"
 #include "Texture.hpp"
+#include "Timer.hpp"
 
 Player::Player( )
 	: playerTex_{ ResourceHandler::GetInst( ).LoadTexture( L"Player_Texture", L"/texture/idle/cuphead_idle.png" ) } {
 	CreateCollider( );
+	getCollider( )->setScale( Vec2{ 100.f, 100.f } );
+
 }
 
 Player::~Player( )
-{
-}
+{}
 
 void Player::CreateProjectile( )
 {

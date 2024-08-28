@@ -1,10 +1,9 @@
-#include "pch.h"
 #include "Core.hpp"
-
-#include "PathHandler.hpp"
-#include "Timer.hpp"
 #include "InputDeviceHandler.hpp"
+#include "PathHandler.hpp"
 #include "SceneHandler.hpp"
+#include "Timer.hpp"
+#include <algorithm>
 
 Core::Core( )
 	: hWnd_{ nullptr }
@@ -12,6 +11,8 @@ Core::Core( )
 	, hdc_{ nullptr }
 	, hBitmap_{ nullptr }
 	, hMemDC_{ nullptr }
+	, hPen_{ }
+	, hBrush_{ }
 {}
 
 Core::~Core( ) 
@@ -19,6 +20,9 @@ Core::~Core( )
 	ReleaseDC( hWnd_, hdc_ );
 	DeleteDC( hMemDC_ );
 	DeleteObject( hBitmap_ );
+
+	std::for_each( hPen_.begin( ), hPen_.end( ), []( HPEN& pen ) { DeleteObject( pen ); } );
+	std::for_each( hBrush_.begin( ), hBrush_.end( ), []( HBRUSH& brush ) { DeleteObject( brush ); } );
 }
 
 int Core::init( HWND hWnd, POINT resolution ) 
@@ -39,6 +43,8 @@ int Core::init( HWND hWnd, POINT resolution )
 	hMemDC_ = CreateCompatibleDC( hdc_ );
 	HBITMAP defaultBmp = (HBITMAP)SelectObject( hMemDC_, hBitmap_ );
 	DeleteObject( defaultBmp );
+
+	CreatePenBrush( );
 
 	// Handler √ ±‚»≠
 	PathHandler::GetInst( ).init( );
@@ -62,4 +68,12 @@ void Core::progress( )
 	BitBlt( hdc_, 0, 0, resolution_.x, resolution_.y, hMemDC_, 0, 0, SRCCOPY );
 
 	Timer::GetInst( ).render( );
+}
+
+void Core::CreatePenBrush( ) {
+	hPen_[ static_cast<UINT>( PEN_TYPE::RED ) ] = CreatePen( PS_SOLID, 1, RGB( 255, 0, 0 ) );
+	hPen_[ static_cast<UINT>( PEN_TYPE::GREEN ) ] = CreatePen( PS_SOLID, 1, RGB( 0, 255, 0 ) );
+	hPen_[ static_cast<UINT>( PEN_TYPE::BLUE ) ] = CreatePen( PS_SOLID, 1, RGB( 0, 0, 255 ) );
+
+	hBrush_[ static_cast<UINT>( BRUSH_TYPE::HOLLOW ) ] = (HBRUSH)GetStockObject( HOLLOW_BRUSH );
 }
