@@ -7,10 +7,12 @@
 #include "Projectile.hpp"
 #include "Scene.hpp"
 #include "SceneHandler.hpp"
+#include "ResourceHandler.hpp"
+#include "Texture.hpp"
 
 Player::Player( )
-{
-}
+	: playerTex_{ ResourceHandler::GetInst( ).LoadTexture( L"Player_Texture", L"/texture/idle/cuphead_idle.png" ) }
+{}
 
 Player::~Player( )
 {
@@ -55,11 +57,6 @@ void Player::update( )
 void Player::render( HDC hdc )
 {
 	Vec2 objPos = getObjPos( );
-	Vec2 objScale = getObjScale( );
-	
-	Rectangle( hdc
-		, static_cast<int>( objPos.x - objScale.x / 2.f )
-		, static_cast<int>( objPos.y - objScale.y / 2.f )
-		, static_cast<int>( objPos.x + objScale.x / 2.f )
-		, static_cast<int>( objPos.y + objScale.y / 2.f ) );
+
+	playerTex_->Draw( hdc, objPos );
 }

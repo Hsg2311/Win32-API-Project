@@ -10,10 +10,15 @@ private:
 	virtual ~Texture( );
 
 public:
-	void Load( const std::wstring& filePath );
+	void Load( const std::wstring& filePath ) { texImage_.Load( filePath.c_str( ) ); }
+	void Draw( HDC hdc, const Vec2& objPos ) { 
+		texImage_.Draw( hdc, 
+			static_cast<int>( objPos.x - texImage_.GetWidth( ) / 2.f ), 
+			static_cast<int>( objPos.y - texImage_.GetHeight( ) / 2.f ), 
+			texImage_.GetWidth( ), texImage_.GetHeight( ) ); 
+	}
 
 private:
-	HDC texDc_;
 	CImage texImage_;
 
 	friend class ResourceHandler;

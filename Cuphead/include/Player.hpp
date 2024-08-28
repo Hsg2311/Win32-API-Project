@@ -3,6 +3,8 @@
 
 #include "Object.hpp"
 
+class Texture;
+
 class Player : public Object
 {
 public:
@@ -15,6 +17,9 @@ public:
 public:
 	virtual void update( ) override;
 	virtual void render( HDC hdc ) override;
+
+private:
+	Texture* playerTex_;
 };
 
 #endif // __PLAYER_HPP
