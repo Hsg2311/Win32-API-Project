@@ -29,6 +29,7 @@ void SceneHandler::init( )
 void SceneHandler::update( )
 {
 	currScene_->update( );
+	currScene_->componentUpdate( );
 }
 
 void SceneHandler::render( HDC hdc )

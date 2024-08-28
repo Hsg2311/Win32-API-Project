@@ -39,6 +39,16 @@ void Scene::update( )
 	}*/
 }
 
+void Scene::componentUpdate( ) {
+	// Scene에 등록된 Object들을 componentUpdate
+	auto objListCopy = objList_;
+	std::for_each( objListCopy.begin( ), objListCopy.end( ), []( auto& objs ) {
+		std::for_each( objs.begin( ), objs.end( ), []( auto obj ) {
+			obj->componentUpdate( );
+		} );
+	} );
+}
+
 void Scene::render( HDC hdc )
 {
 	// Scene에 등록된 Object들을 render

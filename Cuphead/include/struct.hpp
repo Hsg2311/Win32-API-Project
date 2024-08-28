@@ -34,6 +34,61 @@ public:
 	{}
 
 public:
+	Vec2 operator+( const Vec2& rhs ) const
+	{
+		return Vec2{ x + rhs.x, y + rhs.y };
+	}
+
+	Vec2 operator-( const Vec2& rhs ) const
+	{
+		return Vec2{ x - rhs.x, y - rhs.y };
+	}
+
+	Vec2 operator*( float scalar ) const
+	{
+		return Vec2{ x * scalar, y * scalar };
+	}
+
+	Vec2 operator/( float scalar ) const
+	{
+		assert( scalar != 0.f );
+
+		return Vec2{ x / scalar, y / scalar };
+	}
+
+	Vec2& operator+=( const Vec2& rhs )
+	{
+		x += rhs.x;
+		y += rhs.y;
+
+		return *this;
+	}
+
+	Vec2& operator-=( const Vec2& rhs )
+	{
+		x -= rhs.x;
+		y -= rhs.y;
+
+		return *this;
+	}
+
+	Vec2& operator*=( float scalar )
+	{
+		x *= scalar;
+		y *= scalar;
+
+		return *this;
+	}
+
+	Vec2& operator/=( float scalar )
+	{
+		assert( scalar != 0.f );
+
+		x /= scalar;
+		y /= scalar;
+
+		return *this;
+	}
 };
 
 #endif // __STRUCT_HPP

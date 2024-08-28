@@ -18,6 +18,7 @@ public:
 	virtual void Exit( ) = 0;
 
 	void update( );
+	void componentUpdate( );
 	void render( HDC hdc );
 
 public:

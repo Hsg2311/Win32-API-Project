@@ -11,8 +11,9 @@
 #include "Texture.hpp"
 
 Player::Player( )
-	: playerTex_{ ResourceHandler::GetInst( ).LoadTexture( L"Player_Texture", L"/texture/idle/cuphead_idle.png" ) }
-{}
+	: playerTex_{ ResourceHandler::GetInst( ).LoadTexture( L"Player_Texture", L"/texture/idle/cuphead_idle.png" ) } {
+	CreateCollider( );
+}
 
 Player::~Player( )
 {
@@ -59,4 +60,6 @@ void Player::render( HDC hdc )
 	Vec2 objPos = getObjPos( );
 
 	playerTex_->Draw( hdc, objPos );
+
+	componentRender( hdc );
 }
