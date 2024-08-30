@@ -1,8 +1,9 @@
 #include "Core.hpp"
-#include "InputDeviceHandler.hpp"
 #include "PathHandler.hpp"
-#include "SceneHandler.hpp"
 #include "Timer.hpp"
+#include "InputDeviceHandler.hpp"
+#include "SceneHandler.hpp"
+#include "CollisionHandler.hpp"
 #include <algorithm>
 
 Core::Core( )
@@ -57,7 +58,9 @@ void Core::progress( ) {
 	// Handler update
 	Timer::GetInst( ).update( );
 	InputDeviceHandler::GetInst( ).update( );
+
 	SceneHandler::GetInst( ).update( );
+	CollisionHandler::GetInst( ).update( );
 
 	// Rendering (Double buffering)
 	Rectangle( hMemDC_, -1, -1, resolution_.x + 1, resolution_.y + 1 );

@@ -6,7 +6,12 @@
 
 class Collider {
 public:
-	Collider( ) : offset_{ }, finalPos_{ }, scale_{ } {}
+	Collider( ) 
+		: offset_{ }
+		, finalPos_{ }
+		, scale_{ }
+		, id_{ nextId_++ }
+	{}
 
 public:
 	void setOffset( const Vec2& offset ) { offset_ = offset; }
@@ -35,6 +40,9 @@ private:
 	Vec2 offset_;
 	Vec2 finalPos_;
 	Vec2 scale_;
+	UINT id_;
+
+	static UINT nextId_;
 };
 
 #endif // __COLLIDER_HPP

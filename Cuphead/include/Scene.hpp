@@ -28,12 +28,16 @@ public:
 
 public:
 	void addObject( GROUP_TYPE groupType, Object* obj ) {
-		objList_[ static_cast<UINT>( groupType ) ].emplace_back( obj );
+		objGroupList_[ static_cast<UINT>( groupType ) ].emplace_back( obj );
+	}
+
+	const std::vector<Object*>& getGroup( GROUP_TYPE groupType ) const {
+		return objGroupList_[ static_cast<UINT>( groupType ) ];
 	}
 
 private:
 	// 오브젝트를 저장 및 관리할 벡터를 그룹 개수만큼 선언
-	std::array<std::vector<Object*>, static_cast<UINT>( GROUP_TYPE::EOE )> objList_;
+	std::array<std::vector<Object*>, static_cast<UINT>( GROUP_TYPE::EOE )> objGroupList_;
 	std::wstring sceneName_;
 };
 
