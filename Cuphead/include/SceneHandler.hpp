@@ -2,18 +2,20 @@
 #define __SCENE_HANDLER_HPP
 
 #include "define.hpp"
+#include "Scene.hpp"
 #include <array>
 #include <Windows.h>
-
-class Scene;
 
 class SceneHandler {
 	SINGLETON( SceneHandler );
 
 public:
 	void init( );
-	void update( );
-	void render( HDC hdc );
+	void update( ) {
+		currScene_->update( );
+		currScene_->componentUpdate( );
+	}
+	void render( HDC hdc ) { currScene_->render( hdc ); }
 
 public:
 	Scene* getCurrScene( ) const { return currScene_; }

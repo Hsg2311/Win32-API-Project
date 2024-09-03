@@ -11,11 +11,11 @@ public:
 	virtual ~Player( );
 
 public:
-	void CreateProjectile( );
-
-public:
 	virtual void update( ) override;
 	virtual void render( HDC hdc ) override;
+
+public:
+	void CreateProjectile( );
 
 public:
 	virtual void OnCollision( Object* other ) override;

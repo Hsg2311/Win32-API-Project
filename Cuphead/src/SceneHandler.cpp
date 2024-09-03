@@ -21,12 +21,3 @@ void SceneHandler::init( ) {
 	currScene_ = sceneList_[ static_cast<UINT>( SCENE_TYPE::START_SCENE ) ];
 	currScene_->Entry( );
 }
-
-void SceneHandler::update( ) {
-	currScene_->update( );
-	currScene_->componentUpdate( );
-}
-
-void SceneHandler::render( HDC hdc ) {
-	currScene_->render( hdc );
-}
