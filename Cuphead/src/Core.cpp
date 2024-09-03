@@ -4,6 +4,7 @@
 #include "InputDeviceHandler.hpp"
 #include "SceneHandler.hpp"
 #include "CollisionHandler.hpp"
+#include "EventHandler.hpp"
 #include <algorithm>
 
 Core::Core( )
@@ -68,6 +69,9 @@ void Core::progress( ) {
 	BitBlt( hdc_, 0, 0, resolution_.x, resolution_.y, hMemDC_, 0, 0, SRCCOPY );
 
 	Timer::GetInst( ).render( );
+
+	// Event 지연 처리
+	EventHandler::GetInst( ).update( );
 }
 
 void Core::CreatePenBrush( ) {

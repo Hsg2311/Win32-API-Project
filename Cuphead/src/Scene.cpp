@@ -21,7 +21,8 @@ void Scene::update( ) {
 	auto objListCopy = objGroupList_;
 	std::for_each( objListCopy.begin( ), objListCopy.end( ), []( auto& objs ) {
 		std::for_each( objs.begin( ), objs.end( ), []( auto obj ) {
-			obj->update( );
+			if( obj->IsAlive( ) )
+				obj->update( );
 		} );
 	} );
 
@@ -48,9 +49,15 @@ void Scene::componentUpdate( ) {
 
 void Scene::render( HDC hdc ) {
 	// Scene에 등록된 Object들을 render
-	std::for_each( objGroupList_.begin( ), objGroupList_.end( ), [&hdc]( auto& objs ) {
-		std::for_each( objs.begin( ), objs.end( ), [&hdc]( auto obj ) {
-			obj->render( hdc );
-		} );
-	} );
+	for ( auto& group : objGroupList_ ) {
+		for ( auto iter = group.begin( ); iter != group.end( ); ) {
+			if ( ( *iter )->IsAlive( ) ) {
+				( *iter )->render( hdc );
+				++iter;
+			}
+			else {
+				iter = group.erase( iter );
+			}
+		}
+	}
 }

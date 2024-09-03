@@ -6,10 +6,12 @@
 Projectile::Projectile( )
 	: theta_{ 0.f }
 	, direction_{ }
-{}
+{
+	CreateCollider( );
+	getCollider( )->setScale( Vec2{ 20.f, 20.f } );
+}
 
-Projectile::~Projectile( )
-{}
+Projectile::~Projectile( ) {}
 
 void Projectile::update( ) {
 	auto objPos = getObjPos( );
@@ -32,4 +34,6 @@ void Projectile::render( HDC hdc ) {
 		static_cast<int>( objPos.y - objScale.y / 2.f ),
 		static_cast<int>( objPos.x + objScale.x / 2.f ),
 		static_cast<int>( objPos.y + objScale.y / 2.f ) );
+
+	componentRender( hdc );
 }

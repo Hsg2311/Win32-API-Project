@@ -1,12 +1,11 @@
-#include "InputDeviceHandler.hpp"
 #include "Player.hpp"
-#include "Projectile.hpp"
-#include "ResourceHandler.hpp"
-#include "Scene.hpp"
-#include "SceneHandler.hpp"
 #include "struct.hpp"
-#include "Texture.hpp"
 #include "Timer.hpp"
+#include "InputDeviceHandler.hpp"
+#include "Texture.hpp"
+#include "ResourceHandler.hpp"
+#include "Projectile.hpp"
+#include "func.hpp"
 
 Player::Player( )
 	: playerTex_{ ResourceHandler::GetInst( ).LoadTexture( L"Player_Texture", L"/texture/idle/cuphead_idle.png" ) } {
@@ -16,18 +15,6 @@ Player::Player( )
 
 Player::~Player( )
 {}
-
-void Player::CreateProjectile( ) {
-	auto playerPos = getObjPos( );
-	playerPos.y -= getObjScale( ).y / 2.f;
-	
-	Projectile* projectile = new Projectile{ };
-	projectile->setObjPos( playerPos );
-	projectile->setObjScale( Vec2{ 30.f, 30.f } );
-	projectile->setDirection( Vec2( -1.f, 7.f ) );
-	
-	SceneHandler::GetInst( ).getCurrScene( )->addObject( GROUP_TYPE::DEFAULT, projectile );
-};
 
 void Player::update( ) {
 	Vec2 objPos = getObjPos( );
@@ -58,6 +45,19 @@ void Player::render( HDC hdc ) {
 
 	componentRender( hdc );
 }
+
+void Player::CreateProjectile( ) {
+	auto playerPos = getObjPos( );
+	playerPos.y -= getObjScale( ).y / 2.f;
+
+	Projectile* projectile = new Projectile{ };
+	projectile->setObjName( L"Player_Projectile" );
+	projectile->setObjPos( playerPos );
+	projectile->setObjScale( Vec2{ 30.f, 30.f } );
+	projectile->setDirection( Vec2( 0.f, 1.f ) );
+
+	CreateObject( GROUP_TYPE::PLAYER_PROJECTILE, projectile );
+};
 
 void Player::OnCollision( Object* other )
 {

@@ -28,8 +28,9 @@
 enum class GROUP_TYPE {
 	DEFAULT,
 	PLAYER,
-	PROJECTILE,
 	ENEMY,
+	PLAYER_PROJECTILE,
+	ENEMY_PROJECTILE,
 
 	EOE
 };
@@ -51,6 +52,14 @@ enum class PEN_TYPE {
 
 enum class BRUSH_TYPE {
 	HOLLOW,
+
+	EOE
+};
+
+enum class EVENT_TYPE {
+	CREATE_OBJECT,
+	DESTROY_OBJECT,
+	CHANGE_SCENE,
 
 	EOE
 };

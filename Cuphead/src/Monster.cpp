@@ -1,6 +1,7 @@
 #include "Monster.hpp"
 #include "Timer.hpp"
 #include <cmath>
+#include <type_traits>
 
 Monster::Monster( )
 	: centerPos_{ Vec2{ 0.f, 0.f } }
@@ -40,6 +41,10 @@ void Monster::OnCollision( Object* other )
 void Monster::OnCollisionEntry( Object* other )
 {
 	getCollider( )->addCollisionCount( );
+
+	if ( other->getObjName( ) == L"Player_Projectile" ) {
+
+	}
 }
 
 void Monster::OnCollisionExit( Object* other )
