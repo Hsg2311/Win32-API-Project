@@ -58,3 +58,17 @@ void Player::render( HDC hdc ) {
 
 	componentRender( hdc );
 }
+
+void Player::OnCollision( Object* other )
+{
+}
+
+void Player::OnCollisionEntry( Object* other )
+{
+	getCollider( )->addCollisionCount( );
+}
+
+void Player::OnCollisionExit( Object* other )
+{
+	getCollider( )->subCollisionCount( );
+}

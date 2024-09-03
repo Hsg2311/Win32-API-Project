@@ -20,6 +20,10 @@ public:
 public:
 	void CreateCollider( ) { collider_ = new Collider{ }; }
 
+	virtual void OnCollision( Object* other ) {}
+	virtual void OnCollisionEntry( Object* other ) {}
+	virtual void OnCollisionExit( Object* other ) {}
+
 public:
 	virtual void update( ) = 0 {
 	}

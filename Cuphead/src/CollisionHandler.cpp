@@ -10,8 +10,7 @@ CollisionHandler::CollisionHandler( )
 	: collisionTable_{ }
 {}
 
-CollisionHandler::~CollisionHandler( )
-{}
+CollisionHandler::~CollisionHandler( ) {}
 
 void CollisionHandler::init( )
 {
@@ -53,18 +52,68 @@ void CollisionHandler::collisionUpdate( GROUP_TYPE lhs, GROUP_TYPE rhs ) {
 
 	std::for_each( lhsGroup.begin( ), lhsGroup.end( ), [&]( auto lgObj ) {
 		// 충돌체 보유 X
-		if ( lgObj == nullptr ) return;
+		if ( lgObj == nullptr || lgObj->getCollider( ) == nullptr ) return;
 
 		std::for_each( rhsGroup.begin( ), rhsGroup.end( ), [&]( auto rgObj ) {
 			// 충돌체 보유 X or 자기 자신과 충돌
-			if ( rgObj == nullptr || lgObj == rgObj ) return;
+			if ( rgObj == nullptr || rgObj->getCollider( ) == nullptr || lgObj == rgObj ) return;
 
-			IsCollided( lgObj->getCollider( ), rgObj->getCollider( ) );
+			// 두 충돌체 아이디를 조합
+			auto combination = COLLIDER_ID{
+				.lr = {
+					.left = lgObj->getCollider( )->getID( ),
+					.right = rgObj->getCollider( )->getID( )
+				}
+			};
+
+			auto iter = collisionInfo_.find( combination.id );
+
+			// 충돌 정보가 미등록 상태인 경우 등록(충돌하지 않음으로)
+			if ( iter == collisionInfo_.end( ) ) {
+				collisionInfo_.insert( { combination.id, false } );
+				iter = collisionInfo_.find( combination.id );
+			}
+
+			if ( IsCollided( lgObj->getCollider( ), rgObj->getCollider( ) ) ) {
+				// 현재 충돌 중이다.
+
+				if ( iter->second ) {
+					// 이전에도 충돌하고 있었다. -> 충돌 중
+					lgObj->OnCollision( rgObj );
+					rgObj->OnCollision( lgObj );
+				}
+				else {
+					// 이전에는 충돌하지 않았다. -> 막 충돌된 시점
+					lgObj->OnCollisionEntry( rgObj );
+					rgObj->OnCollisionEntry( lgObj );
+					iter->second = true;
+				}
+			}
+			else {
+				// 현재 충돌하고 있지 않다.
+
+				if ( iter->second ) {
+					// 이전에는 충돌하고 있었다. -> 충돌이 막 끝난 시점
+					lgObj->OnCollisionExit( rgObj );
+					rgObj->OnCollisionExit( lgObj );
+					iter->second = false;
+				}
+			}
 		} );
 	} );
 }
 
-bool CollisionHandler::IsCollided( Collider* lhs, Collider* rhs )
-{
+bool CollisionHandler::IsCollided( Collider* lhs, Collider* rhs ) {
+	auto lPos = lhs->getFinalPos( );
+	auto lScale = lhs->getScale( );
+
+	auto rPos = rhs->getFinalPos( );
+	auto rScale = rhs->getScale( );
+
+	if ( abs( lPos.x - rPos.x ) < ( lScale.x + rScale.x ) / 2.f
+		&& abs( lPos.y - rPos.y ) < ( lScale.y + rScale.y ) / 2.f ) {
+		return true;
+	}
+
 	return false;
 }
