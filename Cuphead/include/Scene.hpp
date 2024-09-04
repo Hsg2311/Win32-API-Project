@@ -2,10 +2,13 @@
 #define __SCENE_HPP
 
 #include "define.hpp"
+#include "func.hpp"
 #include <array>
 #include <string>
 #include <vector>
 #include <Windows.h>
+#include <ranges>
+#include <algorithm>
 
 class Object;
 
@@ -19,12 +22,13 @@ public:
 	const std::wstring& getSceneName( ) const { return sceneName_; }
 
 public:
-	virtual void Entry( ) = 0;
-	virtual void Exit( ) = 0;
-
-	void update( );
+	virtual void update( );
 	void componentUpdate( );
 	void render( HDC hdc );
+
+public:
+	virtual void Entry( ) = 0;
+	virtual void Exit( ) = 0;
 
 public:
 	void addObject( GROUP_TYPE groupType, Object* obj ) {
@@ -33,6 +37,12 @@ public:
 
 	const std::vector<Object*>& getGroup( GROUP_TYPE groupType ) const {
 		return objGroupList_[ static_cast<UINT>( groupType ) ];
+	}
+
+	void destroyObjGroupList( ) {
+		std::ranges::for_each( objGroupList_, []( auto& group ) {
+			Safe_Delete_Vector( group );
+		} );
 	}
 
 private:

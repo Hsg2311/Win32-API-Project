@@ -6,6 +6,8 @@
 #include <array>
 #include <Windows.h>
 
+class EventHandler;
+
 class SceneHandler {
 	SINGLETON( SceneHandler );
 
@@ -19,6 +21,17 @@ public:
 
 public:
 	Scene* getCurrScene( ) const { return currScene_; }
+
+private:
+	void changeScene( SCENE_TYPE sceneType ) {
+		currScene_->Exit( );
+
+		currScene_ = sceneList_[ static_cast<UINT>( sceneType ) ];
+
+		currScene_->Entry( );
+	}
+
+	friend class EventHandler;
 
 private:
 	std::array<Scene*, static_cast<UINT>( SCENE_TYPE::EOE )> sceneList_;

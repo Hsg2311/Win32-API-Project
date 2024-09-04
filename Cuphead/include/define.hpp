@@ -38,6 +38,7 @@ enum class GROUP_TYPE {
 enum class SCENE_TYPE {
 	START_SCENE,
 	TUTORIAL_SCENE,
+	TOOL_SCENE,
 
 	EOE
 };

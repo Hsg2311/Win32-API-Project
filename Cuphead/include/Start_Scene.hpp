@@ -9,11 +9,13 @@ public:
 	virtual ~Start_Scene( );
 
 public:
+	virtual void update( ) override;
+
+public:
 	virtual void Entry( ) override;
 	virtual void Exit( ) override;
 
-	/*virtual void update( ) override;
-	virtual void render( HDC hdc ) override;*/
+	//virtual void render( HDC hdc ) override;
 };
 
 #endif // __START_SCENE_HPP

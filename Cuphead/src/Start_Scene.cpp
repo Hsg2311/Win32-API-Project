@@ -4,12 +4,22 @@
 #include "Monster.hpp"
 #include "Core.hpp"
 #include "CollisionHandler.hpp"
+#include "InputDeviceHandler.hpp"
+#include "func.hpp"
 
 Start_Scene::Start_Scene( )
 {}
 
 Start_Scene::~Start_Scene( )
 {}
+
+void Start_Scene::update( ) {
+	Scene::update( );
+
+	if ( KEY_TAP( InputData::Q ) ) {
+		ChangeScene( SCENE_TYPE::TOOL_SCENE );
+	}
+}
 
 void Start_Scene::Entry( ) {
 	Object* obj = new Player{ };
@@ -41,6 +51,8 @@ void Start_Scene::Entry( ) {
 }
 
 void Start_Scene::Exit( ) {
+	Scene::destroyObjGroupList( );
+
 	CollisionHandler::GetInst( ).reset( );
 }
 

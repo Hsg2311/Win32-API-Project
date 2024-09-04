@@ -15,7 +15,7 @@ void EventHandler::update( ) {
 	} );
 
 	deadObjects_.clear( );
-
+	
 	// Event Ã³¸®
 	std::for_each( events_.begin( ), events_.end( ), [this]( const auto& event ) {
 		excute( event );
@@ -46,6 +46,7 @@ void EventHandler::excute( const Event& event ) {
 		break;
 
 	case EVENT_TYPE::CHANGE_SCENE:
+		SceneHandler::GetInst( ).changeScene( static_cast<SCENE_TYPE>( event.wParam ) );
 		break;
 	}
 }

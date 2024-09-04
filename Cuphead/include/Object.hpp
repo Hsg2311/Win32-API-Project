@@ -4,6 +4,8 @@
 #include "Collider.hpp"
 #include <string>
 
+class EventHandler;
+
 class Object {
 public:
 	Object( ) : objName_{ }, objPos_ { }, objScale_{ }, collider_{ nullptr }, alive_{ true } {}
@@ -63,6 +65,7 @@ private:
 	Collider* collider_;
 
 	bool alive_;
+	
 	friend class EventHandler;
 };
 
