@@ -5,6 +5,7 @@
 #include "SceneHandler.hpp"
 #include "CollisionHandler.hpp"
 #include "EventHandler.hpp"
+#include <ranges>
 #include <algorithm>
 
 Core::Core( )
@@ -22,8 +23,8 @@ Core::~Core( ) {
 	DeleteDC( hMemDC_ );
 	DeleteObject( hBitmap_ );
 
-	std::for_each( hPen_.begin( ), hPen_.end( ), []( HPEN& pen ) { DeleteObject( pen ); } );
-	std::for_each( hBrush_.begin( ), hBrush_.end( ), []( HBRUSH& brush ) { DeleteObject( brush ); } );
+	std::ranges::for_each( hPen_, []( HPEN& pen ) { DeleteObject( pen ); } );
+	std::ranges::for_each( hBrush_, []( HBRUSH& brush ) { DeleteObject( brush ); } );
 }
 
 int Core::init( HWND hWnd, POINT resolution ) {

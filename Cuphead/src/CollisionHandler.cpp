@@ -1,13 +1,13 @@
 #include "CollisionHandler.hpp"
-//#include <algorithm>
-
 #include "SceneHandler.hpp"
 #include "Scene.hpp"
 #include "Object.hpp"
+#include <ranges>
 #include <algorithm>
 
 CollisionHandler::CollisionHandler( )
 	: collisionTable_{ }
+	, collisionInfo_{ }
 {}
 
 CollisionHandler::~CollisionHandler( ) {}
@@ -50,11 +50,11 @@ void CollisionHandler::collisionUpdate( GROUP_TYPE lhs, GROUP_TYPE rhs ) {
 	const auto& lhsGroup = currScene->getGroup( lhs );
 	const auto& rhsGroup = currScene->getGroup( rhs );
 
-	std::for_each( lhsGroup.begin( ), lhsGroup.end( ), [&]( auto lgObj ) {
+	std::ranges::for_each( lhsGroup, [&]( auto lgObj ) {
 		// 충돌체 보유 X
 		if ( lgObj == nullptr || lgObj->getCollider( ) == nullptr ) return;
 
-		std::for_each( rhsGroup.begin( ), rhsGroup.end( ), [&]( auto rgObj ) {
+		std::ranges::for_each( rhsGroup, [&]( auto rgObj ) {
 			// 충돌체 보유 X or 자기 자신과 충돌
 			if ( rgObj == nullptr || rgObj->getCollider( ) == nullptr || lgObj == rgObj ) return;
 

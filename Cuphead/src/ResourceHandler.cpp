@@ -1,15 +1,16 @@
-#include "PathHandler.hpp"
-#include "Res.hpp"
 #include "ResourceHandler.hpp"
+#include "Res.hpp"
 #include "Texture.hpp"
+#include "PathHandler.hpp"
 #include <cassert>
+#include <ranges>
 
 ResourceHandler::ResourceHandler( )
 	: texMap_{ }
 {}
 
 ResourceHandler::~ResourceHandler( ) {
-	std::for_each( texMap_.begin( ), texMap_.end( ), []( auto& tex ) {
+	std::ranges::for_each( texMap_, []( auto& tex ) {
 		delete tex.second;
 	} );
 }

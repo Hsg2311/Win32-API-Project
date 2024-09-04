@@ -1,5 +1,6 @@
 #include "Object.hpp"
 #include "Scene.hpp"
+#include <ranges>
 #include <algorithm>
 
 Scene::Scene( )
@@ -9,8 +10,8 @@ Scene::Scene( )
 
 Scene::~Scene( ) {
 	// Scene에 등록된 Object들을 delete
-	std::for_each( objGroupList_.begin( ), objGroupList_.end( ), []( auto& objs ) {
-		std::for_each( objs.begin( ), objs.end( ), []( auto obj ) {
+	std::ranges::for_each( objGroupList_, []( auto& objs ) {
+		std::ranges::for_each( objs, []( auto obj ) {
 			delete obj;
 		} );
 	} );
@@ -18,30 +19,18 @@ Scene::~Scene( ) {
 
 void Scene::update( ) {
 	// Scene에 등록된 Object들을 update
-	auto objListCopy = objGroupList_;
-	std::for_each( objListCopy.begin( ), objListCopy.end( ), []( auto& objs ) {
-		std::for_each( objs.begin( ), objs.end( ), []( auto obj ) {
+	std::ranges::for_each( objGroupList_, []( auto& objs ) {
+		std::ranges::for_each( objs, []( auto obj ) {
 			if( obj->IsAlive( ) )
 				obj->update( );
 		} );
 	} );
-
-	/*for ( UINT i = 0; i < (UINT)GROUP_TYPE::EOE; ++i )
-	{
-		for ( size_t j = 0; j < objList_[ i ].size( ); ++j )
-		{
-
-			objList_[ i ][ j ]->update( );
-
-		}
-	}*/
 }
 
 void Scene::componentUpdate( ) {
 	// Scene에 등록된 Object들을 componentUpdate
-	auto objListCopy = objGroupList_;
-	std::for_each( objListCopy.begin( ), objListCopy.end( ), []( auto& objs ) {
-		std::for_each( objs.begin( ), objs.end( ), []( auto obj ) {
+	std::ranges::for_each( objGroupList_, []( auto& objs ) {
+		std::ranges::for_each( objs, []( auto obj ) {
 			obj->componentUpdate( );
 		} );
 	} );
