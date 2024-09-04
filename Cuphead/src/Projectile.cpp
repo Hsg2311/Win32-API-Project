@@ -1,5 +1,6 @@
 #include "Projectile.hpp"
 #include "Timer.hpp"
+#include "func.hpp"
 //#define _USE_MATH_DEFINES
 //#include <math.h>
 
@@ -36,4 +37,12 @@ void Projectile::render( HDC hdc ) {
 		static_cast<int>( objPos.y + objScale.y / 2.f ) );
 
 	componentRender( hdc );
+}
+
+void Projectile::OnCollisionEntry( Object* other ) {
+	getCollider( )->addCollisionCount( );
+
+	if ( other->getObjName( ) == L"Monster" ) {
+		DestroyObject( this );
+	}
 }

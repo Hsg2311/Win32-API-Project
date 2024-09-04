@@ -8,6 +8,7 @@ Monster::Monster( )
 	, speed_{ 100.f }
 	, maxDistance_{ 100.f }
 	, dir_{ 1 }
+	, hp_{ 5 }
 {
 	CreateCollider( );
 	getCollider( )->setScale( Vec2{ 40.f, 40.f } );
@@ -43,7 +44,11 @@ void Monster::OnCollisionEntry( Object* other )
 	getCollider( )->addCollisionCount( );
 
 	if ( other->getObjName( ) == L"Player_Projectile" ) {
-		DestroyObject( this );
+		--hp_;
+
+		if ( hp_ <= 0 ) {
+			DestroyObject( this );
+		}
 	}
 }
 

@@ -21,6 +21,11 @@ public:
 	virtual void update( ) override;
 	virtual void render( HDC hdc ) override;
 
+public:
+	//virtual void OnCollision( Object* other ) override;
+	virtual void OnCollisionEntry( Object* other ) override;
+	//virtual void OnCollisionExit( Object* other ) override;
+
 private:
 	float theta_;
 	Vec2 direction_;

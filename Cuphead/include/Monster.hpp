@@ -32,6 +32,7 @@ private:
 	float speed_;
 	float maxDistance_;
 	int dir_;
+	int hp_;
 };
 
 #endif // __MONSTER_HPP
