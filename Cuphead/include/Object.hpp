@@ -2,29 +2,43 @@
 #define __OBJECT_HPP
 
 #include "Collider.hpp"
+#include "Animator.hpp"
 #include <string>
 
 class EventHandler;
 
 class Object {
 public:
-	Object( ) : objName_{ }, objPos_ { }, objScale_{ }, collider_{ nullptr }, alive_{ true } {}
+	Object( )
+		: objName_{ }
+		, objPos_ { }
+		, objScale_{ }
+		, collider_{ nullptr }
+		, animator_{ nullptr }
+		, alive_{ true } {}
+
 	Object( const Object& other )
 		: objName_{ other.objName_ }
 		, objPos_{ other.objPos_ }
 		, objScale_{ other.objScale_ }
 		, collider_{ nullptr }
+		, animator_{ nullptr }
 		, alive_{ true } {
 		CreateCollider( );
 		getCollider( )->setScale( other.getCollider( )->getScale( ) );
+
+
 	}
+
 	Object( Object&& other ) noexcept
 		: objName_{ std::move( other.objName_ ) }
 		, objPos_{ std::move( other.objPos_ ) }
 		, objScale_{ std::move( other.objScale_ ) }
 		, collider_{ other.collider_ }
+		, animator_{ other.animator_ }
 		, alive_{ true } {
 		other.collider_ = nullptr;
+		other.animator_ = nullptr;
 	}
 
 	Object& operator=( const Object& ) = delete;
@@ -87,6 +101,7 @@ private:
 	Vec2 objScale_;
 
 	Collider* collider_;
+	Animator* animator_;
 
 	bool alive_;
 	
