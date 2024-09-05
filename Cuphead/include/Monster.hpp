@@ -27,6 +27,9 @@ public:
 	virtual void OnCollisionEntry( Object* other ) override;
 	virtual void OnCollisionExit( Object* other ) override;
 
+public:
+	virtual Monster* clone( ) override { return new Monster{ *this }; }
+
 private:
 	Vec2 centerPos_;
 	float speed_;

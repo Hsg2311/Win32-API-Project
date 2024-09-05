@@ -26,6 +26,9 @@ public:
 	virtual void OnCollisionEntry( Object* other ) override;
 	//virtual void OnCollisionExit( Object* other ) override;
 
+public:
+	virtual Projectile* clone( ) override { return new Projectile{ *this }; }
+
 private:
 	float theta_;
 	Vec2 direction_;

@@ -22,6 +22,9 @@ public:
 	virtual void OnCollisionEntry( Object* other ) override;
 	virtual void OnCollisionExit( Object* other ) override;
 
+public:
+	virtual Player* clone( ) override { return new Player{ *this }; }
+
 private:
 	Texture* playerTex_;
 };

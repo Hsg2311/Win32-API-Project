@@ -9,6 +9,27 @@ class EventHandler;
 class Object {
 public:
 	Object( ) : objName_{ }, objPos_ { }, objScale_{ }, collider_{ nullptr }, alive_{ true } {}
+	Object( const Object& other )
+		: objName_{ other.objName_ }
+		, objPos_{ other.objPos_ }
+		, objScale_{ other.objScale_ }
+		, collider_{ nullptr }
+		, alive_{ true } {
+		CreateCollider( );
+		getCollider( )->setScale( other.getCollider( )->getScale( ) );
+	}
+	Object( Object&& other ) noexcept
+		: objName_{ std::move( other.objName_ ) }
+		, objPos_{ std::move( other.objPos_ ) }
+		, objScale_{ std::move( other.objScale_ ) }
+		, collider_{ other.collider_ }
+		, alive_{ true } {
+		other.collider_ = nullptr;
+	}
+
+	Object& operator=( const Object& ) = delete;
+	Object& operator=( Object&& ) = delete;
+
 	virtual ~Object( ) = 0 { delete collider_; }
 
 public:
@@ -56,6 +77,9 @@ public:
 			collider_->render( hdc );
 		}
 	}
+
+public:
+	virtual Object* clone( ) = 0;
 
 private:
 	std::wstring objName_;
