@@ -1,22 +1,37 @@
 #ifndef __ANIMATOR_HPP
 #define __ANIMATOR_HPP
 
+#include "func.hpp"
+#include "Animation.hpp"
+#include "struct.hpp"
 #include <map>
 #include <string>
 
-class Animation;
+class Texture;
 
 class Animator {
 public:
-	Animator( );
-	~Animator( );
+	Animator( ) : animations_{ }, currAnim_{ nullptr } {}
+	~Animator( ) { Safe_Delete_Map( animations_ ); }
 
-	void createAnimation( );
-	void findAnimation( );
+	void createAnimation( const std::wstring& animName, Texture* tex, Vec2 LT, 
+							Vec2 sliceSize, Vec2 step, float duration, UINT frameCount );
+	Animation* findAnimation( const std::wstring& animName );
 	void play( );
+
+	void update( ) {
+		if( currAnim_ )
+			currAnim_->update( );
+	}
+
+	void render( HDC hdc ) {
+		if ( currAnim_ )
+			currAnim_->render( hdc );
+	}
 
 private:
 	std::map<std::wstring, Animation*> animations_;
+	Animation* currAnim_;
 };
 
 #endif // __ANIMATOR_HPP

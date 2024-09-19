@@ -7,6 +7,7 @@
 #include <type_traits>
 #include <ranges>
 #include <algorithm>
+#include <map>
 
 inline void CreateObject( GROUP_TYPE groupType, Object* object ) {
 	auto event = Event{
@@ -44,6 +45,16 @@ void Safe_Delete_Vector( std::vector<T>& vec ) {
 	} );
 
 	vec.clear( );
+}
+
+template<class T1, class T2>
+	requires std::is_pointer_v< std::remove_cvref_t<T2> >
+void Safe_Delete_Map( std::map<T1, T2>& map ) {
+	std::ranges::for_each( map, []( auto& elem ) {
+		delete elem.second;
+	} );
+
+	map.clear( );
 }
 
 #endif // __GLOBAL_FUNC_HPP

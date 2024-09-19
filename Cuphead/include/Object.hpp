@@ -25,9 +25,10 @@ public:
 		, animator_{ nullptr }
 		, alive_{ true } {
 		CreateCollider( );
+		getCollider( )->setOffset( other.getCollider( )->getOffset( ) );
 		getCollider( )->setScale( other.getCollider( )->getScale( ) );
 
-
+		CreateAnimator( );
 	}
 
 	Object( Object&& other ) noexcept
@@ -44,7 +45,10 @@ public:
 	Object& operator=( const Object& ) = delete;
 	Object& operator=( Object&& ) = delete;
 
-	virtual ~Object( ) = 0 { delete collider_; }
+	virtual ~Object( ) = 0 { 
+		delete collider_;
+		delete animator_;
+	}
 
 public:
 	void setObjName( const std::wstring& objName ) { objName_ = objName; }
@@ -56,11 +60,13 @@ public:
 	Vec2 getObjScale( ) const { return objScale_; }
 
 	Collider* getCollider( ) const { return collider_; }
+	Animator* getAnimator( ) const { return animator_; }
 
 	bool IsAlive( ) const { return alive_; }
 
 public:
 	void CreateCollider( ) { collider_ = new Collider{ }; }
+	void CreateAnimator( ) { animator_ = new Animator{ }; }
 
 	virtual void OnCollision( Object* other ) {}
 	virtual void OnCollisionEntry( Object* other ) {}
@@ -89,6 +95,9 @@ public:
 	virtual void componentRender( HDC hdc ) final {
 		if ( collider_ ) {
 			collider_->render( hdc );
+		}
+		if ( animator_ ) {
+			animator_->render( hdc );
 		}
 	}
 

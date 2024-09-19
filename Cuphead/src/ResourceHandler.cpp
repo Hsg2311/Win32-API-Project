@@ -2,6 +2,7 @@
 #include "Res.hpp"
 #include "Texture.hpp"
 #include "PathHandler.hpp"
+#include "func.hpp"
 #include <cassert>
 #include <ranges>
 
@@ -10,9 +11,7 @@ ResourceHandler::ResourceHandler( )
 {}
 
 ResourceHandler::~ResourceHandler( ) {
-	std::ranges::for_each( texMap_, []( auto& tex ) {
-		delete tex.second;
-	} );
+	Safe_Delete_Map( texMap_ );
 }
 
 Texture* ResourceHandler::LoadTexture( const std::wstring& resKey, const std::wstring& relativePath ) {

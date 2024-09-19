@@ -11,6 +11,10 @@ Player::Player( )
 	: playerTex_{ ResourceHandler::GetInst( ).LoadTexture( L"Player_Texture", L"/texture/idle/cuphead_idle.png" ) } {
 	CreateCollider( );
 	getCollider( )->setScale( Vec2{ 100.f, 100.f } );
+
+	CreateAnimator( );
+	getAnimator( )->createAnimation( L"Player_Idle", playerTex_, Vec2{ 0.f, 0.f }, 
+									Vec2{ 100.f, 155.f }, Vec2{ 100.f, 0.f }, 1.f, 9 );
 }
 
 Player::~Player( )
