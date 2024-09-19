@@ -1,16 +1,16 @@
 #ifndef __SCENE_HPP
 #define __SCENE_HPP
 
+#include "Object.hpp"
 #include "define.hpp"
 #include "func.hpp"
+#include "EventHandler.hpp"
 #include <array>
 #include <string>
 #include <vector>
 #include <Windows.h>
 #include <ranges>
 #include <algorithm>
-
-class Object;
 
 class Scene {
 public:
@@ -43,6 +43,15 @@ public:
 		std::ranges::for_each( objGroupList_, []( auto& group ) {
 			Safe_Delete_Vector( group );
 		} );
+	}
+
+	void ChangeScene( SCENE_TYPE sceneType ) {
+		auto event = Event{
+			.eventType = EVENT_TYPE::CHANGE_SCENE,
+			.wParam = static_cast<DWORD_PTR>( sceneType )
+		};
+
+		EventHandler::GetInst( ).addEvent( event );
 	}
 
 private:

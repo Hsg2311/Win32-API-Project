@@ -1,11 +1,10 @@
 #ifndef __OBJECT_HPP
 #define __OBJECT_HPP
 
+#include "EventHandler.hpp"
 #include "Collider.hpp"
 #include "Animator.hpp"
 #include <string>
-
-class EventHandler;
 
 class Object {
 public:
@@ -71,6 +70,25 @@ public:
 	virtual void OnCollision( Object* other ) {}
 	virtual void OnCollisionEntry( Object* other ) {}
 	virtual void OnCollisionExit( Object* other ) {}
+
+	void CreateObject( GROUP_TYPE groupType, Object* object ) {
+		auto event = Event{
+			.eventType = EVENT_TYPE::CREATE_OBJECT,
+			.wParam = static_cast<DWORD_PTR>( groupType ),
+			.lParam = reinterpret_cast<DWORD_PTR>( object )
+		};
+
+		EventHandler::GetInst( ).addEvent( event );
+	}
+
+	void DestroyObject( Object* object ) {
+		auto event = Event{
+			.eventType = EVENT_TYPE::DESTROY_OBJECT,
+			.lParam = reinterpret_cast<DWORD_PTR>( object )
+		};
+
+		EventHandler::GetInst( ).addEvent( event );
+	}
 
 public:
 	virtual void update( ) = 0 {

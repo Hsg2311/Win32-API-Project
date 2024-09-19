@@ -47,6 +47,10 @@ public:
 		return Vec2{ x * scalar, y * scalar };
 	}
 
+	Vec2 operator*( unsigned int scalar ) const {
+		return Vec2{ x * (float)scalar, y * (float)scalar };
+	}
+
 	Vec2 operator/( float scalar ) const {
 		assert( scalar != 0.f );
 

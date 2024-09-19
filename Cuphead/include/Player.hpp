@@ -2,6 +2,7 @@
 #define __PLAYER_HPP
 
 #include "Object.hpp"
+#include <Windows.h>
 
 class Texture;
 

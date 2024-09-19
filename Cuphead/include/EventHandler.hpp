@@ -22,7 +22,7 @@ public:
 	void excute( const Event& event );
 
 public:
-	void addEvent( const Event& event ) { events_.emplace_back( event ); }
+	void addEvent( const Event& event ) { events_.push_back(event); }
 
 private:
 	std::vector<Event> events_;
