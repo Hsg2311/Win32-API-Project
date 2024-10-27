@@ -31,7 +31,7 @@ public:
 	UINT getID( ) const { return id_; }
 
 public:
-	void update( const Vec2 myObjPos ) { 
+	void update( const Vec2& myObjPos ) { 
 		// Object의 위치를 따라간다.
 		finalPos_ = myObjPos + offset_;
 		//assert( collisionCount_ >= 0 );

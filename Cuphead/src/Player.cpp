@@ -7,14 +7,15 @@
 #include "Projectile.hpp"
 #include "func.hpp"
 
-Player::Player( )
-	: playerTex_{ ResourceHandler::GetInst( ).LoadTexture( L"Player_Texture", L"/texture/idle/cuphead_idle.png" ) } {
+Player::Player( ) {
 	CreateCollider( );
 	getCollider( )->setScale( Vec2{ 100.f, 100.f } );
 
+	auto tex = ResourceHandler::GetInst( ).LoadTexture( L"Player_Texture", L"/texture/idle/cuphead_idle.png" );
 	CreateAnimator( );
-	getAnimator( )->createAnimation( L"Player_Idle", playerTex_, Vec2{ 0.f, 0.f }, 
-									Vec2{ 100.f, 155.f }, Vec2{ 100.f, 0.f }, 1.f, 9 );
+	getAnimator( )->createAnimation( L"Player_Idle", tex, Vec2{ 0.f, 0.f },
+									Vec2{ 100.f, 155.f }, Vec2{ 100.f, 0.f }, 0.065f, 9 );
+	getAnimator( )->play( L"Player_Idle" );
 }
 
 Player::~Player( )
@@ -43,10 +44,6 @@ void Player::update( ) {
 }
 
 void Player::render( HDC hdc ) {
-	Vec2 objPos = getObjPos( );
-
-	playerTex_->Draw( hdc, objPos );
-
 	componentRender( hdc );
 }
 

@@ -18,7 +18,13 @@ public:
 		texImage_.Draw( hdc, 
 			static_cast<int>( objPos.x - texImage_.GetWidth( ) / 2.f ), 
 			static_cast<int>( objPos.y - texImage_.GetHeight( ) / 2.f ), 
-			texImage_.GetWidth( ), texImage_.GetHeight( ) ); 
+			texImage_.GetWidth( ), texImage_.GetHeight( ) );
+	}
+
+	void Draw( HDC hdc, int xDest, int yDest, int nDestWidth, int nDestHeight,
+		int xSrc, int ySrc, int nSrcWidth, int nSrcHeight ) {
+		texImage_.Draw( hdc, xDest, yDest, nDestWidth, nDestHeight,
+						xSrc, ySrc, nSrcWidth, nSrcHeight );
 	}
 
 private:

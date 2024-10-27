@@ -24,6 +24,7 @@ Animation* Animator::findAnimation( const std::wstring& animName ) {
 	return anim->second;
 }
 
-void Animator::play( )
-{
+void Animator::play( const std::wstring& animName ) {
+	currAnim_ = findAnimation( animName );
+	assert( currAnim_ != nullptr );
 }

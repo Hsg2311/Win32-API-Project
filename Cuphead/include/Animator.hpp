@@ -17,16 +17,16 @@ public:
 	void createAnimation( const std::wstring& animName, Texture* tex, Vec2 LT, 
 							Vec2 sliceSize, Vec2 step, float duration, UINT frameCount );
 	Animation* findAnimation( const std::wstring& animName );
-	void play( );
+	void play( const std::wstring& animName );
 
 	void update( ) {
 		if( currAnim_ )
 			currAnim_->update( );
 	}
 
-	void render( HDC hdc ) {
+	void render( HDC hdc, const Vec2& objPos ) {
 		if ( currAnim_ )
-			currAnim_->render( hdc );
+			currAnim_->render( hdc, objPos );
 	}
 
 private:

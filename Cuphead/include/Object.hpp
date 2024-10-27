@@ -98,6 +98,9 @@ public:
 		if ( collider_ ) {
 			collider_->update( getObjPos( ) );
 		}
+		if ( animator_ ) {
+			animator_->update( );
+		}
 	}
 
 	virtual void render( HDC hdc ) = 0 {
@@ -115,7 +118,7 @@ public:
 			collider_->render( hdc );
 		}
 		if ( animator_ ) {
-			animator_->render( hdc );
+			animator_->render( hdc, getObjPos( ) );
 		}
 	}
 
