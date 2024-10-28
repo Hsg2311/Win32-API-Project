@@ -11,6 +11,7 @@ class Texture;
 struct frameInfo {
 	Vec2 LT;
 	Vec2 sliceSize;
+	Vec2 offset;
 	float duration;
 };
 
@@ -28,7 +29,7 @@ public:
 	void update( );
 	void render( HDC hdc, const Vec2& objPos );
 	void create( Texture* tex, Vec2 LT, Vec2 sliceSize,
-				Vec2 step, float duration, UINT frameCount );
+		Vec2 step, float duration, UINT frameCount, Vec2 offset );
 
 private:
 	std::wstring animName_;
