@@ -12,8 +12,8 @@ public:
 	virtual void update( ) override;
 
 public:
-	virtual void Entry( ) override;
-	virtual void Exit( ) override;
+	virtual void entry( ) override;
+	virtual void exit( ) override;
 
 private:
 

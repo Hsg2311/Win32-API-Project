@@ -24,11 +24,11 @@ public:
 
 private:
 	void changeScene( SCENE_TYPE sceneType ) {
-		currScene_->Exit( );
+		currScene_->exit( );
 
 		currScene_ = sceneList_[ static_cast<UINT>( sceneType ) ];
 
-		currScene_->Entry( );
+		currScene_->entry( );
 	}
 
 	friend class EventHandler;

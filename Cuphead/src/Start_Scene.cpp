@@ -17,11 +17,11 @@ void Start_Scene::update( ) {
 	Scene::update( );
 
 	if ( KEY_TAP( InputData::Q ) ) {
-		ChangeScene( SCENE_TYPE::TOOL_SCENE );
+		changeScene( SCENE_TYPE::TOOL_SCENE );
 	}
 }
 
-void Start_Scene::Entry( ) {
+void Start_Scene::entry( ) {
 	Object* obj = new Player{ };
 	obj->setObjName( L"Player" );
 	obj->setObjPos( Vec2{ 640.f, 384.f } );
@@ -36,7 +36,7 @@ void Start_Scene::Entry( ) {
 	const auto monCount = 16;
 	const auto monScale = 50.f;
 	const auto moveDist = 25.f;
-	const auto step = ( Core::GetInst( ).getResolution( ).x - (2*moveDist+monScale) ) / (monCount - 1);
+	const auto step = ( Core::getInst( ).getResolution( ).x - (2*moveDist+monScale) ) / (monCount - 1);
 
 	for ( auto i = 0; i < monCount; ++i ) {
 		Monster* mon = new Monster{ };
@@ -51,14 +51,14 @@ void Start_Scene::Entry( ) {
 
 	// 충돌 지정
 	// 그룹 간의 충돌을 검사한다.
-	CollisionHandler::GetInst( ).checkCollision( GROUP_TYPE::PLAYER, GROUP_TYPE::ENEMY );
-	CollisionHandler::GetInst( ).checkCollision( GROUP_TYPE::PLAYER_PROJECTILE, GROUP_TYPE::ENEMY );
+	CollisionHandler::getInst( ).checkCollision( GROUP_TYPE::PLAYER, GROUP_TYPE::ENEMY );
+	CollisionHandler::getInst( ).checkCollision( GROUP_TYPE::PLAYER_PROJECTILE, GROUP_TYPE::ENEMY );
 }
 
-void Start_Scene::Exit( ) {
+void Start_Scene::exit( ) {
 	Scene::destroyObjGroupList( );
 
-	CollisionHandler::GetInst( ).reset( );
+	CollisionHandler::getInst( ).reset( );
 }
 
 //void Start_Scene::update( )

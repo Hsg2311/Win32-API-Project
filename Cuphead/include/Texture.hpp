@@ -13,15 +13,15 @@ private:
 	virtual ~Texture( ) {}
 
 public:
-	void Load( const std::wstring& filePath ) { texImage_.Load( filePath.c_str( ) ); }
-	void Draw( HDC hdc, const Vec2& objPos ) { 
+	void load( const std::wstring& filePath ) { texImage_.Load( filePath.c_str( ) ); }
+	void draw( HDC hdc, const Vec2& objPos ) { 
 		texImage_.Draw( hdc, 
 			static_cast<int>( objPos.x - texImage_.GetWidth( ) / 2.f ), 
 			static_cast<int>( objPos.y - texImage_.GetHeight( ) / 2.f ), 
 			texImage_.GetWidth( ), texImage_.GetHeight( ) );
 	}
 
-	void Draw( HDC hdc, int xDest, int yDest, int nDestWidth, int nDestHeight,
+	void draw( HDC hdc, int xDest, int yDest, int nDestWidth, int nDestHeight,
 		int xSrc, int ySrc, int nSrcWidth, int nSrcHeight ) {
 		texImage_.Draw( hdc, xDest, yDest, nDestWidth, nDestHeight,
 						xSrc, ySrc, nSrcWidth, nSrcHeight );

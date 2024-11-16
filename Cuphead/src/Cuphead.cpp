@@ -46,7 +46,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     }
 
 
-    if ( FAILED( Core::GetInst( ).init( g_hWnd, POINT{ 1280, 768 } ) ) ) {
+    if ( FAILED( Core::getInst( ).init( g_hWnd, POINT{ 1280, 768 } ) ) ) {
         MessageBox( nullptr, L"Core Init Failed", L"Error", MB_OK );
         return FALSE;
     }
@@ -67,7 +67,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
             }
         }
         else {
-            Core::GetInst( ).progress( );
+            Core::getInst( ).progress( );
         }
     }
 

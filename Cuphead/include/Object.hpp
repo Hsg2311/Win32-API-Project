@@ -23,11 +23,11 @@ public:
 		, collider_{ nullptr }
 		, animator_{ nullptr }
 		, alive_{ true } {
-		CreateCollider( );
+		createCollider( );
 		getCollider( )->setOffset( other.getCollider( )->getOffset( ) );
 		getCollider( )->setScale( other.getCollider( )->getScale( ) );
 
-		CreateAnimator( );
+		createAnimator( );
 	}
 
 	Object( Object&& other ) noexcept
@@ -61,33 +61,33 @@ public:
 	Collider* getCollider( ) const { return collider_; }
 	Animator* getAnimator( ) const { return animator_; }
 
-	bool IsAlive( ) const { return alive_; }
+	bool isAlive( ) const { return alive_; }
 
 public:
-	void CreateCollider( ) { collider_ = new Collider{ }; }
-	void CreateAnimator( ) { animator_ = new Animator{ }; }
+	void createCollider( ) { collider_ = new Collider{ }; }
+	void createAnimator( ) { animator_ = new Animator{ }; }
 
-	virtual void OnCollision( Object* other ) {}
-	virtual void OnCollisionEntry( Object* other ) {}
-	virtual void OnCollisionExit( Object* other ) {}
+	virtual void onCollision( Object* other ) {}
+	virtual void onCollisionEntry( Object* other ) {}
+	virtual void onCollisionExit( Object* other ) {}
 
-	void CreateObject( GROUP_TYPE groupType, Object* object ) {
+	void createObject( GROUP_TYPE groupType, Object* object ) {
 		auto event = Event{
 			.eventType = EVENT_TYPE::CREATE_OBJECT,
 			.wParam = static_cast<DWORD_PTR>( groupType ),
 			.lParam = reinterpret_cast<DWORD_PTR>( object )
 		};
 
-		EventHandler::GetInst( ).addEvent( event );
+		EventHandler::getInst( ).addEvent( event );
 	}
 
-	void DestroyObject( Object* object ) {
+	void destroyObject( Object* object ) {
 		auto event = Event{
 			.eventType = EVENT_TYPE::DESTROY_OBJECT,
 			.lParam = reinterpret_cast<DWORD_PTR>( object )
 		};
 
-		EventHandler::GetInst( ).addEvent( event );
+		EventHandler::getInst( ).addEvent( event );
 	}
 
 public:

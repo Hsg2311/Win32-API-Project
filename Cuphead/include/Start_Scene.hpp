@@ -8,12 +8,9 @@ public:
 	Start_Scene( );
 	virtual ~Start_Scene( );
 
-public:
 	virtual void update( ) override;
-
-public:
-	virtual void Entry( ) override;
-	virtual void Exit( ) override;
+	virtual void entry( ) override;
+	virtual void exit( ) override;
 
 	//virtual void render( HDC hdc ) override;
 };

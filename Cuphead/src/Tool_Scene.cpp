@@ -11,14 +11,14 @@ void Tool_Scene::update( ) {
 	Scene::update( );
 
 	if ( KEY_TAP( InputData::Q ) ) {
-		ChangeScene( SCENE_TYPE::START_SCENE );
+		changeScene( SCENE_TYPE::START_SCENE );
 	}
 }
 
-void Tool_Scene::Entry( ) {
+void Tool_Scene::entry( ) {
 }
 
-void Tool_Scene::Exit( ) {
+void Tool_Scene::exit( ) {
 }
 
 //void Tool_Scene::update( ) {
