@@ -5,6 +5,8 @@
 #include "SceneHandler.hpp"
 #include "CollisionHandler.hpp"
 #include "EventHandler.hpp"
+#include "Camera.hpp"
+
 #include <ranges>
 #include <algorithm>
 
@@ -52,6 +54,7 @@ int Core::init( HWND hWnd, POINT resolution ) {
 	Timer::getInst( ).init( );
 	InputDeviceHandler::getInst( ).init( );
 	SceneHandler::getInst( ).init( );
+	Camera::getInst( ).init( );
 
 	return S_OK;
 }
@@ -63,6 +66,7 @@ void Core::progress( ) {
 
 	SceneHandler::getInst( ).update( );
 	CollisionHandler::getInst( ).update( );
+	Camera::getInst( ).update( );
 
 	// Rendering (Double buffering)
 	Rectangle( hMemDC_, -1, -1, resolution_.x + 1, resolution_.y + 1 );
