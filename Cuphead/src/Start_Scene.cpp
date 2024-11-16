@@ -6,6 +6,7 @@
 #include "CollisionHandler.hpp"
 #include "InputDeviceHandler.hpp"
 #include "func.hpp"
+#include "Camera.hpp"
 
 Start_Scene::Start_Scene( )
 {}
@@ -53,6 +54,10 @@ void Start_Scene::entry( ) {
 	// 그룹 간의 충돌을 검사한다.
 	CollisionHandler::getInst( ).checkCollision( GROUP_TYPE::PLAYER, GROUP_TYPE::ENEMY );
 	CollisionHandler::getInst( ).checkCollision( GROUP_TYPE::PLAYER_PROJECTILE, GROUP_TYPE::ENEMY );
+
+	// 카메라 초기화
+	auto pos = Vec2( Core::getInst( ).getResolution( ) ) / 2.f;
+	Camera::getInst( ).setLookAt( pos );
 }
 
 void Start_Scene::exit( ) {
