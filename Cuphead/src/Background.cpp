@@ -1,17 +1,22 @@
 #include "Background.hpp"
 #include "ResourceHandler.hpp"
 #include "Core.hpp"
+#include "Camera.hpp"
 
 Background::Background( const std::wstring& resKey, const std::wstring& fileName )
 	: texture_{ ResourceHandler::getInst( ).loadTexture( resKey, std::wstring( L"/texture/background/" + fileName ) ) } {}
 
 void Background::render( HDC hdc ) {
+	auto renderPos = Camera::getInst( ).getRenderPos( getObjPos( ) );
+	auto xDest = static_cast<int>( renderPos.x - Core::getInst( ).getResolution( ).x / 2.f );
+	auto yDest = static_cast<int>( renderPos.y - Core::getInst( ).getResolution( ).y / 2.f );
+
 	auto destWidth = Core::getInst( ).getResolution( ).x;
 	auto destHeight = Core::getInst( ).getResolution( ).y;
 	auto srcWidth = texture_->getWidth( );
 	auto srcHeight = texture_->getHeight( );
 
-	texture_->draw( hdc, 0, 0, destWidth, destHeight,
+	texture_->draw( hdc, xDest, yDest, destWidth, destHeight,
 					0, 0, srcWidth, srcHeight );
 
 	componentRender( hdc );

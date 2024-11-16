@@ -4,6 +4,8 @@
 #include "EventHandler.hpp"
 #include "Collider.hpp"
 #include "Animator.hpp"
+#include "Camera.hpp"
+
 #include <string>
 
 class Object {
@@ -95,7 +97,7 @@ public:
 
 	virtual void componentUpdate( ) final {
 		if ( collider_ ) {
-			collider_->update( getObjPos( ) );
+			collider_->update( objPos_ );
 		}
 		if ( animator_ ) {
 			animator_->update( );
@@ -103,11 +105,13 @@ public:
 	}
 
 	virtual void render( HDC hdc ) = 0 {
+		auto renderPos = Camera::getInst( ).getRenderPos( objPos_ );
+
 		Rectangle( hdc
-			, static_cast<int>( objPos_.x - objScale_.x / 2.f )
-			, static_cast<int>( objPos_.y - objScale_.y / 2.f )
-			, static_cast<int>( objPos_.x + objScale_.x / 2.f )
-			, static_cast<int>( objPos_.y + objScale_.y / 2.f ) );
+			, static_cast<int>( renderPos.x - objScale_.x / 2.f )
+			, static_cast<int>( renderPos.y - objScale_.y / 2.f )
+			, static_cast<int>( renderPos.x + objScale_.x / 2.f )
+			, static_cast<int>( renderPos.y + objScale_.y / 2.f ) );
 
 		componentRender( hdc );
 	}
@@ -117,7 +121,7 @@ public:
 			collider_->render( hdc );
 		}
 		if ( animator_ ) {
-			animator_->render( hdc, getObjPos( ) );
+			animator_->render( hdc, objPos_ );
 		}
 	}
 
