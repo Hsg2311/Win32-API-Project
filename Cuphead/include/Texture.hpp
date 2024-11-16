@@ -22,10 +22,13 @@ public:
 	}
 
 	void draw( HDC hdc, int xDest, int yDest, int nDestWidth, int nDestHeight,
-		int xSrc, int ySrc, int nSrcWidth, int nSrcHeight ) {
+				int xSrc, int ySrc, int nSrcWidth, int nSrcHeight ) {
 		texImage_.Draw( hdc, xDest, yDest, nDestWidth, nDestHeight,
 						xSrc, ySrc, nSrcWidth, nSrcHeight );
 	}
+
+	int getWidth( ) { return texImage_.GetWidth( ); }
+	int getHeight( ) { return texImage_.GetHeight( ); }
 
 private:
 	CImage texImage_;
