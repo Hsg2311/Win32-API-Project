@@ -18,8 +18,7 @@ Player::Player( ) {
 	getAnimator( )->play( L"Player_Idle" );
 }
 
-Player::~Player( )
-{}
+Player::~Player( ) {}
 
 void Player::update( ) {
 	Vec2 objPos = getObjPos( );
