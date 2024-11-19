@@ -7,15 +7,14 @@
 #include <string>
 #include <vector>
 
+struct texInfo {
+	std::wstring resKey;
+	std::wstring fileName;
+};
+
 class UserInterface : public Object {
 public:
-	UserInterface( const std::wstring& resKey, const std::wstring& fileName, bool alpha = true );
-	UserInterface( Texture* tex, bool alpha )
-		: texture_( tex )
-		, textures_( )
-		, bAlpha_( alpha )
-		, alpha_( 254 ) {}
-
+	UserInterface( const std::vector<texInfo>& info );
 	virtual ~UserInterface( ) {}
 
 	virtual void update( ) override {}
@@ -25,11 +24,9 @@ public:
 		return new UserInterface{ *this };
 	}
 
-private:
-	Texture* texture_;
+protected:
 	std::vector<Texture*> textures_;
-	bool bAlpha_;
-	BYTE alpha_;
+	Texture* currTex_;
 };
 
 #endif 
