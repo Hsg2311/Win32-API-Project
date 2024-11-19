@@ -8,6 +8,15 @@
 
 #include <string>
 
+struct texInfo {
+	std::wstring resKey;
+	std::wstring fileName;
+	Vec2 sliceSize{ 0.f, 0.f };
+	float duration = 0.f;
+	UINT frameCount = 0;
+	Vec2 offset{ 0.f, 0.f };
+};
+
 class Object {
 public:
 	Object( )

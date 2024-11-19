@@ -7,11 +7,6 @@
 #include <string>
 #include <vector>
 
-struct texInfo {
-	std::wstring resKey;
-	std::wstring fileName;
-};
-
 class UserInterface : public Object {
 public:
 	UserInterface( const std::vector<texInfo>& info );
