@@ -24,6 +24,7 @@
 #define KEY_HOLD( key ) KEY_CHECK( key, KEY_STATE::HOLD )
 #define KEY_AWAY( key ) KEY_CHECK( key, KEY_STATE::AWAY )
 #define KEY_NONE( key ) KEY_CHECK( key, KEY_STATE::NONE )
+#define MOUSE_POS InputDeviceHandler::getInst().getMousePos()
 
 enum class GROUP_TYPE {
 	DEFAULT,
@@ -32,13 +33,14 @@ enum class GROUP_TYPE {
 	PLAYER_PROJECTILE,
 	ENEMY_PROJECTILE,
 	BACKGROUND,
+	UI,
 
 	EOE
 };
 
 enum class SCENE_TYPE {
 	TITLE_SCENE,
-	START_SCENE,
+	MENU_SCENE,
 	TUTORIAL_SCENE,
 	TOOL_SCENE,
 
