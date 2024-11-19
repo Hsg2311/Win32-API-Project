@@ -3,6 +3,7 @@
 
 #include "Res.hpp"
 #include "struct.hpp"
+
 #include <atlimage.h>
 #include <string>
 #include <Windows.h>
