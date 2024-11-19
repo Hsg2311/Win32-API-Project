@@ -4,6 +4,7 @@
 #include "Core.hpp"
 #include "Camera.hpp"
 #include "UserInterface.hpp"
+#include "BlinkingUI.hpp"
 
 void TitleScene::update( ) {
 	Scene::update( );
@@ -20,9 +21,12 @@ void TitleScene::entry( ) {
 	backgroundAnim->setObjPos( Vec2( 640.f, 410.f ) );
 	addObject( GROUP_TYPE::BACKGROUND, backgroundAnim );
 
-	auto ui = new UserInterface( L"Title_UI", L"press_any_key.png" );
+	std::vector<texInfo> info;
+	info.push_back( { L"Title_UI", L"press_any_key.png" } );
+
+	auto ui = new BlinkingUI( info, true );
 	ui->setObjName( L"Title_UI" );
-	ui->setObjPos( Vec2( 640.f, 500.f ) );
+	ui->setObjPos( Vec2( 640.f, 550.f ) );
 	addObject( GROUP_TYPE::BACKGROUND, ui );
 
 	auto pos = Vec2( Core::getInst( ).getResolution( ) ) / 2.f;
