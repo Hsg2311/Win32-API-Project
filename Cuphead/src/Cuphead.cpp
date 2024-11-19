@@ -5,6 +5,8 @@
 #include "Cuphead.h"
 
 #include "Core.hpp"
+#include "SceneHandler.hpp"
+#include "EventHandler.hpp"
 
 #define MAX_LOADSTRING 100
 
@@ -167,6 +169,14 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             HDC hdc = BeginPaint(hWnd, &ps);
             // TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
             EndPaint(hWnd, &ps);
+        }
+        break;
+    case WM_KEYDOWN:
+        if ( SceneHandler::getInst( ).getCurrSceneType( ) == SCENE_TYPE::TITLE_SCENE ) {
+			EventHandler::getInst( ).addEvent( Event { 
+                .eventType = EVENT_TYPE::CHANGE_SCENE,
+                .wParam = static_cast<DWORD_PTR>( SCENE_TYPE::START_SCENE )
+            } );
         }
         break;
     case WM_DESTROY:
