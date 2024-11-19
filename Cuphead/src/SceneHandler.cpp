@@ -6,6 +6,7 @@
 SceneHandler::SceneHandler( )
 	: sceneList_{ }
 	, currScene_{ nullptr }
+	, currSceneType_{ SCENE_TYPE::TITLE_SCENE }
 {}
 
 SceneHandler::~SceneHandler( ) {
@@ -27,5 +28,6 @@ void SceneHandler::init( ) {
 
 	// 현재 Scene 설정
 	currScene_ = sceneList_[ static_cast<UINT>( SCENE_TYPE::TITLE_SCENE ) ];
+	currSceneType_ = SCENE_TYPE::TITLE_SCENE;
 	currScene_->entry( );
 }
