@@ -11,18 +11,18 @@ void TitleScene::update( ) {
 }
 
 void TitleScene::entry( ) {
-	auto background = new Background( L"Title", L"title_background.png" );
+	auto background = new Background( L"Title", L"title/title_background.png" );
 	background->setObjName( L"Title" );
 	background->setObjPos( Vec2( 640.f, 360.f ) );
 	addObject( GROUP_TYPE::BACKGROUND, background );
 
-	auto backgroundAnim = new BackgroundAnim( L"Title_Cuphead_and_MugMan", L"title_cuphead_Mugman.png", 0.04f, 34 );
+	auto backgroundAnim = new BackgroundAnim( L"Title_Cuphead_and_MugMan", L"title/title_cuphead_Mugman.png", 0.04f, 34 );
 	backgroundAnim->setObjName( L"Title_Cuphead_and_MugMan" );
 	backgroundAnim->setObjPos( Vec2( 640.f, 410.f ) );
 	addObject( GROUP_TYPE::BACKGROUND, backgroundAnim );
 
 	std::vector<texInfo> info;
-	info.push_back( { L"Title_UI", L"press_any_key.png" } );
+	info.push_back( { L"Title_UI", L"title/press_any_key.png" } );
 
 	auto ui = new BlinkingUI( info, true );
 	ui->setObjName( L"Title_UI" );
