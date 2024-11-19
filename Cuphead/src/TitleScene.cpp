@@ -3,6 +3,7 @@
 #include "define.hpp"
 #include "Core.hpp"
 #include "Camera.hpp"
+#include "UserInterface.hpp"
 
 void TitleScene::update( ) {
 	Scene::update( );
@@ -18,6 +19,11 @@ void TitleScene::entry( ) {
 	backgroundAnim->setObjName( L"Title_Cuphead_and_MugMan" );
 	backgroundAnim->setObjPos( Vec2( 640.f, 410.f ) );
 	addObject( GROUP_TYPE::BACKGROUND, backgroundAnim );
+
+	auto ui = new UserInterface( L"Title_UI", L"press_any_key.png" );
+	ui->setObjName( L"Title_UI" );
+	ui->setObjPos( Vec2( 640.f, 500.f ) );
+	addObject( GROUP_TYPE::BACKGROUND, ui );
 
 	auto pos = Vec2( Core::getInst( ).getResolution( ) ) / 2.f;
 	Camera::getInst( ).setLookAt( pos );

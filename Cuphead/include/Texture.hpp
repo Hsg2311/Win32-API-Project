@@ -27,6 +27,12 @@ public:
 						xSrc, ySrc, nSrcWidth, nSrcHeight );
 	}
 
+	void draw( HDC hdc, int xDest, int yDest, int nDestWidth, int nDestHeight,
+				int xSrc, int ySrc, int nSrcWidth, int nSrcHeight, BYTE alpha ) {
+		texImage_.AlphaBlend( hdc, xDest, yDest, nDestWidth, nDestHeight,
+							xSrc, ySrc, nSrcWidth, nSrcHeight, alpha );
+	}
+
 	int getWidth( ) { return texImage_.GetWidth( ); }
 	int getHeight( ) { return texImage_.GetHeight( ); }
 
