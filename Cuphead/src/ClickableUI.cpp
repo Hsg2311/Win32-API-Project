@@ -1,5 +1,6 @@
 #include "ClickableUI.hpp"
 #include "InputDeviceHandler.hpp"
+#include "EventHandler.hpp"
 
 void ClickableUI::update( ) {
 	auto bLbtnTap = KEY_TAP( InputData::MOUSE_LBTN );
@@ -74,7 +75,10 @@ void ClickableUI::mouseLbtnUp( ) {
 
 void ClickableUI::mouseLbtnClicked( ) {
 	if ( getObjName( ) == L"Play Button" ) {
-		
+		EventHandler::getInst( ).addEvent( Event {
+			.eventType = EVENT_TYPE::CHANGE_SCENE,
+			.wParam = static_cast<DWORD_PTR>( SCENE_TYPE::WORLD_SCENE )
+		} );
 	}
 	else if ( getObjName( ) == L"Exit Button" ) {
 		PostQuitMessage( 0 );
