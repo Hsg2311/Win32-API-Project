@@ -17,6 +17,9 @@ public:
 
 		x /= hypotenuse;
 		y /= hypotenuse;
+
+		x = std::abs( x );
+		y = std::abs( y );
 	}
 
 public:
