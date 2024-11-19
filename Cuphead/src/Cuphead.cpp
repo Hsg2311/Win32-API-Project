@@ -175,7 +175,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         if ( SceneHandler::getInst( ).getCurrSceneType( ) == SCENE_TYPE::TITLE_SCENE ) {
 			EventHandler::getInst( ).addEvent( Event { 
                 .eventType = EVENT_TYPE::CHANGE_SCENE,
-                .wParam = static_cast<DWORD_PTR>( SCENE_TYPE::START_SCENE )
+                .wParam = static_cast<DWORD_PTR>( SCENE_TYPE::MENU_SCENE )
             } );
         }
         break;

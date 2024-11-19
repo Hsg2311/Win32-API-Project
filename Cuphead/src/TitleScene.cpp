@@ -27,7 +27,7 @@ void TitleScene::entry( ) {
 	auto ui = new BlinkingUI( info, true );
 	ui->setObjName( L"Title_UI" );
 	ui->setObjPos( Vec2( 640.f, 550.f ) );
-	addObject( GROUP_TYPE::BACKGROUND, ui );
+	addObject( GROUP_TYPE::UI, ui );
 
 	auto pos = Vec2( Core::getInst( ).getResolution( ) ) / 2.f;
 	Camera::getInst( ).setLookAt( pos );
