@@ -71,65 +71,65 @@ void OverworldPlayer::update( ) {
 	}
 
 	if ( bUp && !bDown && !bLeft && !bRight ) {
-		getAnimator( )->play( L"Walk_Up" );
+		getAnimator( )->play( L"Cuphead_Walk_Up" );
 		objPos.y -= 300.f * fDT;
 	}
 	if ( bDown && !bUp && !bLeft && !bRight ) {
-		getAnimator( )->play( L"Walk_Down" );
+		getAnimator( )->play( L"Cuphead_Walk_Down" );
 		objPos.y += 300.f * fDT;
 	}
 	if ( bLeft && !bRight && !bUp && !bDown ) {
-		getAnimator( )->play( L"Walk_Left" );
+		getAnimator( )->play( L"Cuphead_Walk_Left" );
 		objPos.x -= 300.f * fDT;
 	}
 	if ( bRight && !bLeft && !bUp && !bDown ) {
-		getAnimator( )->play( L"Walk_Right" );
+		getAnimator( )->play( L"Cuphead_Walk_Right" );
 		objPos.x += 300.f * fDT;
 	}
 	if ( bLeft && bUp && !bDown && !bRight ) {
-		getAnimator( )->play( L"Walk_Left_Up" );
+		getAnimator( )->play( L"Cuphead_Walk_Left_Up" );
 		objPos.x -= 300.f * lu.x * fDT;
 		objPos.y -= 300.f * lu.y * fDT;
 	}
 	if ( bRight && bUp && !bDown && !bLeft ) {
-		getAnimator( )->play( L"Walk_Right_Up" );
+		getAnimator( )->play( L"Cuphead_Walk_Right_Up" );
 		objPos.x += 300.f * ru.x * fDT;
 		objPos.y -= 300.f * ru.y * fDT;
 	}
 	if ( bLeft && bDown && !bUp && !bRight ) {
-		getAnimator( )->play( L"Walk_Left_Down" );
+		getAnimator( )->play( L"Cuphead_Walk_Left_Down" );
 		objPos.x -= 300.f * ld.x * fDT;
 		objPos.y += 300.f * ld.y * fDT;
 	}
 	if ( bRight && bDown && !bUp && !bLeft ) {
-		getAnimator( )->play( L"Walk_Right_Down" );
+		getAnimator( )->play( L"Cuphead_Walk_Right_Down" );
 		objPos.x += 300.f * rd.x * fDT;
 		objPos.y += 300.f * rd.y * fDT;
 	}
 
 	if ( KEY_AWAY( InputData::UP ) ) {
-		getAnimator( )->play( L"Idle_Up" );
+		getAnimator( )->play( L"Cuphead_Idle_Up" );
 	}
 	if ( KEY_AWAY( InputData::DOWN ) ) {
-		getAnimator( )->play( L"Idle_Down" );
+		getAnimator( )->play( L"Cuphead_Idle_Down" );
 	}
 	if ( KEY_AWAY( InputData::LEFT ) ) {
-		getAnimator( )->play( L"Idle_Left" );
+		getAnimator( )->play( L"Cuphead_Idle_Left" );
 	}
 	if ( KEY_AWAY( InputData::RIGHT ) ) {
-		getAnimator( )->play( L"Idle_Right" );
+		getAnimator( )->play( L"Cuphead_Idle_Right" );
 	}
 	if ( KEY_AWAY( InputData::LEFT ) && KEY_AWAY( InputData::UP ) ) {
-		getAnimator( )->play( L"Idle_Left_Up" );
+		getAnimator( )->play( L"Cuphead_Idle_Left_Up" );
 	}
 	if ( KEY_AWAY( InputData::RIGHT ) && KEY_AWAY( InputData::UP ) ) {
-		getAnimator( )->play( L"Idle_Right_Up" );
+		getAnimator( )->play( L"Cuphead_Idle_Right_Up" );
 	}
 	if ( KEY_AWAY( InputData::LEFT ) && KEY_AWAY( InputData::DOWN ) ) {
-		getAnimator( )->play( L"Idle_Left_Down" );
+		getAnimator( )->play( L"Cuphead_Idle_Left_Down" );
 	}
 	if ( KEY_AWAY( InputData::RIGHT ) && KEY_AWAY( InputData::DOWN ) ) {
-		getAnimator( )->play( L"Idle_Right_Down" );
+		getAnimator( )->play( L"Cuphead_Idle_Right_Down" );
 	}
 
 	setObjPos( objPos );
